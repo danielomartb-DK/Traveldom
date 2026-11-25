@@ -8,7 +8,7 @@ export function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="bg-[#0B203B] text-white/90 border-t border-white/10">
+    <footer className="bg-[#102D52] text-white/90 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
           {/* Marca y eslogan */}

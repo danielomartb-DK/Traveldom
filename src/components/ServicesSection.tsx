@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   FileCheck2,
   Building2,
@@ -13,7 +14,6 @@ import {
 } from "lucide-react";
 import { SERVICES, type ServiceItem } from "@/data/content";
 import { RevealOnScroll } from "./RevealOnScroll";
-import { VisualPlaceholder } from "./VisualPlaceholder";
 
 interface ServicesSectionProps {
   onSelectAdvisory: (prefill: { service: string; notes?: string }) => void;
@@ -82,13 +82,21 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
             return (
               <RevealOnScroll key={service.id} delayMs={index * 70}>
                 <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#1D5B91]/40 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
-                  <VisualPlaceholder
-                    fileName={service.imagePlaceholderName}
-                    caption={service.imageCaption}
-                    icon={service.iconName}
-                    variant={index % 2 === 0 ? "navy" : "corporate"}
-                    className="h-40 w-full shrink-0"
-                  />
+                  {/* Fotografía real del servicio */}
+                  <div className="relative h-44 w-full shrink-0 overflow-hidden bg-slate-100">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Overlay sutil de marca */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-[#102D52]/30 via-transparent to-transparent"
+                    />
+                  </div>
 
                   <div className="flex flex-1 flex-col p-6">
                     {/* Ícono minimalista cuadrado estilo Contixs */}
@@ -154,6 +162,22 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
             className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl border border-slate-200"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Imagen real en el modal */}
+            <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-slate-100 sm:h-56">
+              <Image
+                src={activeService.image}
+                alt={activeService.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+                priority
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-[#102D52]/60 via-transparent to-transparent"
+              />
+            </div>
+
             <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-slate-100 bg-white px-6 py-5">
               <div>
                 <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C9A66B]">
@@ -256,4 +280,3 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
     </section>
   );
 }
-

@@ -13,8 +13,8 @@ export interface ServiceItem {
   features: string[];
   processSteps: string[];
   transparencyNote: string;
-  imagePlaceholderName: string;
-  imageCaption: string;
+  image: string;
+  imageAlt: string;
   formServiceValue: string;
   iconName: "FileCheck2" | "Building2" | "Languages" | "ShieldCheck";
 }
@@ -99,8 +99,8 @@ export const SERVICES: ServiceItem[] = [
     ],
     transparencyNote:
       "Traveldom Soluciones brinda asesoría privada e independiente. No representamos a ninguna embajada o consulado y no garantizamos la aprobación de visas, ya que toda decisión corresponde exclusivamente a las autoridades competentes.",
-    imagePlaceholderName: "visa-usa-espana.jpg",
-    imageCaption: "Asesoría documental y pasaportes para visas de EE. UU. y España",
+    image: "/images/service-visa-turista.jpg",
+    imageAlt: "Solicitud de visa de turista: pasaporte, bandera americana y formulario sobre escritorio",
     formServiceValue: "Visa Estados Unidos",
     iconName: "FileCheck2",
   },
@@ -126,8 +126,8 @@ export const SERVICES: ServiceItem[] = [
     ],
     transparencyNote:
       "Este servicio es estrictamente informativo y de acompañamiento organizativo. No tenemos vínculos ni alianzas oficiales con consulados, embajadas ni organismos gubernamentales.",
-    imagePlaceholderName: "asesoria-consular.jpg",
-    imageCaption: "Atención personalizada y revisión de procedimientos consulares",
+    image: "/images/service-asesoria-consular.jpg",
+    imageAlt: "Asesoría consular: asesora entregando pasaporte a cliente en oficina luminosa",
     formServiceValue: "Asesoría consular",
     iconName: "Building2",
   },
@@ -153,8 +153,8 @@ export const SERVICES: ServiceItem[] = [
     ],
     transparencyNote:
       "Nota importante: Facilitamos traducciones de apoyo documental. No afirmamos que nuestras traducciones sean oficiales, judiciales o certificadas salvo confirmación explícita previa según los requisitos de la institución receptora.",
-    imagePlaceholderName: "traduccion-documentos.jpg",
-    imageCaption: "Gestión y traducción de documentos personales y académicos",
+    image: "/images/service-traduccion-documentos.jpg",
+    imageAlt: "Traducción de documentos: traductora firmando acta notarial en oficina de servicios internacionales",
     formServiceValue: "Traducción de documentos",
     iconName: "Languages",
   },
@@ -180,8 +180,8 @@ export const SERVICES: ServiceItem[] = [
     ],
     transparencyNote:
       "Los alcances, montos máximos, exclusiones y condiciones dependen íntegramente de la póliza seleccionada y de la aseguradora correspondiente.",
-    imagePlaceholderName: "seguros-viaje.jpg",
-    imageCaption: "Protección y asistencia integral para viajes internacionales",
+    image: "/images/service-seguros-viaje.jpg",
+    imageAlt: "Seguros de viaje: pasaporte, avión de juguete, billetes de avión y estetoscopio sobre formulario de seguro",
     formServiceValue: "Seguro de viaje",
     iconName: "ShieldCheck",
   },

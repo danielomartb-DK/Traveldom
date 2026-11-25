@@ -2,10 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1a2433;
+  --foreground: #102d52;
   --brand-navy: #102d52;
   --brand-blue: #1d5b91;
-  --brand-sky: #eaf4fc;
   --brand-gold: #c9a66b;
   --brand-surface: #f4f6f8;
 }
@@ -15,7 +14,6 @@
   --color-foreground: var(--foreground);
   --color-navy: var(--brand-navy);
   --color-corporate: var(--brand-blue);
-  --color-sky: var(--brand-sky);
   --color-gold: var(--brand-gold);
   --color-surface: var(--brand-surface);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
