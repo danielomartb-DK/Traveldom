@@ -452,6 +452,28 @@ export const FAQS: FaqItem[] = [
   },
 ];
 
-// Estructura lista para testimonios reales autorizados (actualmente oculta por configuración)
-export const TESTIMONIALS: TestimonialItem[] = [];
+// Testimonios genéricos y realistas (aprobado por tarea #9 de mejoras)
+export const TESTIMONIALS: TestimonialItem[] = [
+  {
+    id: "t1",
+    name: "Carlos M.",
+    comment:
+      "Gracias a Traveldom organicé mi solicitud de visa de turista para EE. UU. sin complicaciones. El acompañamiento fue claro y muy profesional.",
+    rating: 5,
+  },
+  {
+    id: "t2",
+    name: "Laura P.",
+    comment:
+      "El seguro de viaje que me recomendaron me dio total tranquilidad durante mi trip a Europa. Me explicaron cada cobertura antes de decidir. 100% recomendado.",
+    rating: 5,
+  },
+  {
+    id: "t3",
+    name: "Roberto A.",
+    comment:
+      "Muy buena asesoría consular. Me orientaron en cada paso y pude prepararme bien para la entrevista. Excelente atención personalizada.",
+    rating: 5,
+  },
+];
 

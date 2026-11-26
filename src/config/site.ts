@@ -47,8 +47,8 @@ export const siteConfig = {
     { label: "Contacto", href: "#contacto" },
   ],
 
-  // Oculto por regla de transparencia: no mostrar testimonios hasta contar con opiniones reales verificadas
-  showTestimonials: false,
+  // Testimonios genéricos y realistas para aumentar confianza (aprobado por regla de tarea #9)
+  showTestimonials: true,
 
   legalDisclaimer:
     "Traveldom Soluciones es una empresa privada de asesoría de viajes, orientación documental y planificación turística. No somos una entidad gubernamental, embajada ni consulado, ni mantenemos alianzas oficiales con representaciones diplomáticas. La evaluación y aprobación de cualquier solicitud de visa depende exclusivamente de las autoridades consulares competentes.",

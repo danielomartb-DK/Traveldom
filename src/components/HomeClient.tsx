@@ -19,6 +19,7 @@ import {
 import { CtaSection } from "./CtaSection";
 import { Footer } from "./Footer";
 import { WhatsAppFloat } from "./WhatsAppFloat";
+import { ScrollToTop } from "./ScrollToTop";
 
 const initialFormState: AdvisoryFormState = {
   fullName: "",
@@ -72,6 +73,26 @@ export function HomeClient() {
         <ServicesSection onSelectAdvisory={navigateToAdvisoryForm} />
         <HotelsSection onConsultHotel={navigateToAdvisoryForm} />
         <PackagesSection onSelectPackage={navigateToAdvisoryForm} />
+
+        {/* CTA strip after Packages */}
+        <div className="bg-[#F4F6F8] py-10 border-y border-slate-200">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+              <p className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
+                ¿No encontraste el paquete ideal?
+              </p>
+              <p className="mt-1 text-sm text-slate-600">
+                Diseñamos propuestas 100% personalizadas para ti.
+              </p>
+            </div>
+            <a
+              href="#contacto"
+              className="shrink-0 inline-flex items-center gap-2 rounded-md bg-[#C9A66B] px-7 py-3.5 text-sm font-bold text-[#102D52] shadow transition-all hover:bg-[#b8954f]"
+            >
+              Solicita tu paquete personalizado
+            </a>
+          </div>
+        </div>
         <WhyChooseSection />
         <AboutSection />
         <TestimonialsSection />
@@ -81,6 +102,7 @@ export function HomeClient() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <ScrollToTop />
     </>
   );
 }

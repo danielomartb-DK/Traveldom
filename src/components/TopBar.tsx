@@ -20,19 +20,19 @@ export function TopBar() {
             <Phone className="h-3.5 w-3.5 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
             <span>{siteConfig.contact.phoneDisplay}</span>
           </a>
-          <span className="hidden md:inline-flex items-center gap-1.5 text-white/80">
+          <span className="hidden md:inline-flex items-center gap-1.5 text-white/90">
             <Clock className="h-3.5 w-3.5 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
             <span>{siteConfig.contact.hours}</span>
           </span>
         </div>
 
         <div className="flex items-center justify-between sm:justify-end gap-4">
-          <span className="md:hidden inline-flex items-center gap-1.5 text-[11px] text-white/80">
+          <span className="md:hidden inline-flex items-center gap-1.5 text-[11px] text-white/90">
             <Clock className="h-3 w-3 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
             <span>{siteConfig.contact.hours}</span>
           </span>
           <div className="flex items-center gap-3" aria-label="Redes sociales">
-            <span className="hidden lg:inline text-white/65">Síguenos:</span>
+            <span className="hidden lg:inline text-white/90">Síguenos:</span>
             {siteConfig.socials.map((social) => (
               <a
                 key={social.name}
@@ -41,7 +41,7 @@ export function TopBar() {
                 rel="noopener noreferrer"
                 aria-label={social.ariaLabel}
                 title={`${social.name} (placeholder)`}
-                className="inline-flex items-center gap-1 text-white/85 transition-colors hover:text-[#C9A66B]"
+                className="inline-flex items-center gap-1 text-white/90 transition-colors hover:text-[#C9A66B]"
               >
                 {social.name === "Instagram" ? (
                   <Globe className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />

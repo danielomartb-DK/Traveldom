@@ -43,6 +43,34 @@ export function AdvisoryFormSection({
 }: AdvisoryFormSectionProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  /** Validates a single field and merges the result into errors */
+  const validateField = <K extends keyof AdvisoryFormState>(
+    field: K,
+    value: AdvisoryFormState[K]
+  ): string | undefined => {
+    if (field === "email") {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!emailPattern.test(String(value).trim())) {
+        return "Ingresa un correo electrónico válido.";
+      }
+    }
+    if (field === "whatsapp") {
+      const digits = String(value).replace(/\D/g, "");
+      if (digits.length < 8 || digits.length > 15) {
+        return "Ingresa un número de WhatsApp válido con código de área o país (8 a 15 dígitos).";
+      }
+    }
+    return undefined;
+  };
+
+  const handleBlur = <K extends keyof AdvisoryFormState>(field: K) => {
+    const error = validateField(field, form[field]);
+    if (error) {
+      setErrors((prev) => ({ ...prev, [field]: error }));
+    }
+  };
 
   const validate = (): FormErrors => {
     const nextErrors: FormErrors = {};
@@ -115,6 +143,7 @@ export function AdvisoryFormSection({
     }
     if (statusMessage) {
       setStatusMessage(null);
+      setIsSuccess(false);
     }
   };
 
@@ -122,6 +151,7 @@ export function AdvisoryFormSection({
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSuccess(false);
       setStatusMessage(
         "Por favor corrige los campos señalados antes de abrir el canal de envío."
       );
@@ -134,8 +164,9 @@ export function AdvisoryFormSection({
     if (channel === "whatsapp") {
       const whatsappUrl = buildWhatsAppUrl(message);
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      setIsSuccess(true);
       setStatusMessage(
-        "Se ha abierto WhatsApp con tu solicitud prellenada. Confirma el envío directamente en el chat para que un asesor te atienda."
+        "¡Gracias! Tu mensaje ha sido preparado. Se abrirá WhatsApp para completar el envío."
       );
       return;
     }
@@ -145,8 +176,9 @@ export function AdvisoryFormSection({
       message
     );
     window.location.href = mailtoUrl;
+    setIsSuccess(true);
     setStatusMessage(
-      "Se ha preparado el borrador en tu cliente de correo electrónico. Envía el mensaje para completar tu solicitud."
+      "¡Gracias! Se ha preparado el borrador en tu cliente de correo electrónico. Envía el mensaje para completar tu solicitud."
     );
   };
 
@@ -335,6 +367,7 @@ export function AdvisoryFormSection({
                     autoComplete="email"
                     value={form.email}
                     onChange={(e) => handleFieldChange("email", e.target.value)}
+                    onBlur={() => handleBlur("email")}
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? "error-email" : undefined}
                     placeholder="correo@ejemplo.com"
@@ -370,6 +403,7 @@ export function AdvisoryFormSection({
                     autoComplete="tel"
                     value={form.whatsapp}
                     onChange={(e) => handleFieldChange("whatsapp", e.target.value)}
+                    onBlur={() => handleBlur("whatsapp")}
                     aria-invalid={Boolean(errors.whatsapp)}
                     aria-describedby={errors.whatsapp ? "error-whatsapp" : undefined}
                     placeholder="Ej. +1 809 555 0100"
@@ -582,9 +616,11 @@ export function AdvisoryFormSection({
                   role="status"
                   aria-live="polite"
                   className={`mt-5 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
-                    Object.keys(errors).length > 0
-                      ? "border-red-200 bg-red-50 text-red-800"
-                      : "border-[#1D5B91]/30 bg-[#EAF4FC] text-[#102D52]"
+                    isSuccess
+                      ? "border-green-300 bg-green-50 text-green-800"
+                      : Object.keys(errors).length > 0
+                        ? "border-red-200 bg-red-50 text-red-800"
+                        : "border-[#1D5B91]/30 bg-[#EAF4FC] text-[#102D52]"
                   }`}
                 >
                   {statusMessage}

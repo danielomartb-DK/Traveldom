@@ -18,8 +18,11 @@ export function Hero() {
             </div>
 
             <h1 className="font-[family-name:var(--font-poppins)] text-3xl font-bold leading-[1.18] tracking-tight text-[#102D52] sm:text-4xl lg:text-[2.85rem]">
-              El mundo te espera.{" "}
-              <span className="text-[#1D5B91]">Nosotros te ayudamos a llegar.</span>
+              Asesoría de viajes y visas{" "}
+              <span className="text-[#1D5B91]">en República Dominicana</span>
+              <span className="block mt-1 text-2xl sm:text-3xl lg:text-[2rem] font-semibold text-[#C9A66B]">
+                Tu aliado en cada destino.
+              </span>
             </h1>
 
             <p className="max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -39,7 +42,7 @@ export function Hero() {
 
               <a
                 href="#contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-[#1D5B91] bg-white px-6 py-3.5 text-sm font-semibold text-[#102D52] transition-all hover:bg-[#EAF4FC]"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#C9A66B] px-6 py-3.5 text-sm font-bold text-[#102D52] shadow-sm transition-all hover:bg-[#b8954f]"
               >
                 <span>Solicita asesoría</span>
               </a>
