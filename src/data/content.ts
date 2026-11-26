@@ -310,8 +310,8 @@ export const PACKAGES: PackageItem[] = [
       "Acompañamiento personalizado antes y durante el viaje",
     ],
     priceLabel: "Solicitar cotización",
-    image: "/images/beach-coastline-aerial.jpg",
-    imageAlt: "Vista aérea de costa turquesa y resort en República Dominicana",
+    image: "/images/package-punta-cana.jpg",
+    imageAlt: "Vista aérea panorámica de las playas y resorts de Punta Cana",
     destinationValue: "República Dominicana",
   },
   {
@@ -328,8 +328,8 @@ export const PACKAGES: PackageItem[] = [
       "Itinerario sugerido adaptado a tus intereses",
     ],
     priceLabel: "Solicitar cotización",
-    imagePlaceholderName: "destinos-eeuu.jpg",
-    imageCaption: "Nueva York y destinos principales en Estados Unidos",
+    image: "/images/package-nueva-york.jpg",
+    imageAlt: "Estatua de la Libertad y skyline de Manhattan en Nueva York, Estados Unidos",
     destinationValue: "Estados Unidos",
   },
   {
@@ -346,8 +346,8 @@ export const PACKAGES: PackageItem[] = [
       "Asistencia informativa previa a la salida",
     ],
     priceLabel: "Solicitar cotización",
-    imagePlaceholderName: "destinos-europa.jpg",
-    imageCaption: "Barcelona, Madrid y arquitectura europea",
+    image: "/images/package-europa.jpg",
+    imageAlt: "Torre Eiffel en París y vistas panorámicas de ciudades de Europa",
     destinationValue: "España / Europa",
   },
   {
@@ -364,8 +364,8 @@ export const PACKAGES: PackageItem[] = [
       "Seguimiento cercano desde la planificación",
     ],
     priceLabel: "Solicitar cotización",
-    imagePlaceholderName: "paquetes-personalizados.jpg",
-    imageCaption: "Viajes a medida para familias, parejas y viajeros",
+    image: "/images/hotel-colonial-courtyard.jpg",
+    imageAlt: "Itinerarios y viajes personalizados a medida para cada viajero",
     destinationValue: "Destino personalizado",
   },
 ];
