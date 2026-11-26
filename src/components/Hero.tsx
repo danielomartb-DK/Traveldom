@@ -7,10 +7,10 @@ export function Hero() {
       id="inicio"
       className="relative overflow-hidden bg-gradient-to-b from-[#F4F6F8] via-white to-white border-b border-slate-100"
     >
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Columna izquierda: Título, descripción persuasiva, CTAs y elementos de confianza */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5 hero-fade-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#1D5B91]/15 bg-[#EAF4FC] px-3.5 py-1.5 text-xs font-semibold tracking-wide text-[#102D52]">
               <Sparkles className="h-3.5 w-3.5 text-[#C9A66B]" strokeWidth={2} aria-hidden="true" />
               <span>Asesoría turística & consular en RD</span>
@@ -30,7 +30,7 @@ export function Hero() {
             <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
               <a
                 href="#servicios"
-                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg bg-[#102D52] px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-[#1D5B91] hover:shadow-md"
+                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg bg-[#102D52] px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-[#1D5B91] hover:shadow-md active:scale-[0.98]"
               >
                 <span>Conoce nuestros servicios</span>
                 <ArrowRight className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
@@ -38,7 +38,7 @@ export function Hero() {
 
               <a
                 href="#contacto"
-                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg bg-[#C9A66B] px-6 py-3 text-sm font-bold text-[#102D52] shadow-xs transition-all hover:bg-[#b8954f] hover:shadow-md"
+                className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-lg bg-[#C9A66B] px-6 py-3 text-sm font-bold text-[#102D52] shadow-xs transition-all duration-200 hover:bg-[#b8954f] hover:shadow-md active:scale-[0.98]"
               >
                 <span>Solicita asesoría</span>
               </a>

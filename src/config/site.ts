@@ -8,14 +8,14 @@ export const siteConfig = {
   locale: "es-419",
 
   // Único punto de configuración para el número de WhatsApp oficial
-  whatsappNumber: "18098485517",
+  whatsappNumber: "18099292907",
   whatsappDefaultMessage:
     "Hola, estoy interesado en recibir asesoría para mi viaje con Traveldom Soluciones.",
 
   contact: {
     email: "contacto@traveldomsoluciones.com",
-    phoneDisplay: "+1 (809) 848-5517",
-    whatsappDisplay: "+1 (809) 848-5517",
+    phoneDisplay: "+1 (809) 929-2907",
+    whatsappDisplay: "+1 (809) 929-2907",
     hours: "Lun - Vie: 9:00 a.m. - 6:00 p.m. | Sáb: 9:00 a.m. - 1:00 p.m.",
     location: "Santo Domingo, República Dominicana",
   },
@@ -23,8 +23,8 @@ export const siteConfig = {
   socials: [
     {
       name: "Instagram",
-      href: "https://instagram.com",
-      ariaLabel: "Visitar perfil de Instagram de Traveldom Soluciones (enlace de ejemplo)",
+      href: "https://www.instagram.com/traveldom.soluciones/",
+      ariaLabel: "Visitar perfil oficial de Instagram de Traveldom Soluciones",
     },
     {
       name: "Facebook",

@@ -22,7 +22,7 @@ export function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
   };
 
   return (
-    <section id="paquetes" className="bg-white py-20 lg:py-24 scroll-mt-20">
+    <section id="paquetes" className="bg-white py-12 lg:py-16 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
@@ -32,16 +32,16 @@ export function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
             Paquetes de vacaciones
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-3 text-base text-slate-600 sm:text-lg">
             Experiencias diseñadas para disfrutar, descubrir y vivir momentos
             inolvidables
           </p>
         </RevealOnScroll>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2">
           {PACKAGES.map((pkg, idx) => (
-            <RevealOnScroll key={pkg.id} delayMs={idx * 75}>
-              <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
+            <RevealOnScroll key={pkg.id} delayMs={idx * 65}>
+              <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
                 {/* Fotografía o placeholder elegante */}
                 {pkg.image ? (
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">

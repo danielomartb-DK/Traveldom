@@ -13,7 +13,7 @@ export function FaqSection() {
   };
 
   return (
-    <section id="preguntas-frecuentes" className="bg-[#F4F6F8] py-20 lg:py-24 scroll-mt-20">
+    <section id="preguntas-frecuentes" className="bg-[#F4F6F8] py-12 lg:py-16 scroll-mt-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="text-center">
           <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
@@ -24,13 +24,13 @@ export function FaqSection() {
             Preguntas frecuentes
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-4 text-base text-slate-600">
+          <p className="mt-3 text-base text-slate-600">
             Respuestas claras sobre nuestra asesoría de viaje, trámites,
             traducciones, seguros y destinos.
           </p>
         </RevealOnScroll>
 
-        <div className="mt-12 space-y-3">
+        <div className="mt-8 space-y-3">
           {FAQS.map((faq) => {
             const isOpen = openId === faq.id;
             const panelId = `faq-panel-${faq.id}`;

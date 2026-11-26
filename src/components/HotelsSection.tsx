@@ -31,7 +31,7 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
   };
 
   return (
-    <section id="destinos" className="bg-[#F4F6F8] py-20 lg:py-24 scroll-mt-20">
+    <section id="destinos" className="bg-[#F4F6F8] py-12 lg:py-16 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Encabezado centrado */}
         <RevealOnScroll className="mx-auto max-w-3xl text-center">
@@ -42,14 +42,14 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
             Descubre el paraíso de República Dominicana
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-3 text-base text-slate-600 sm:text-lg">
             Explora destinos increíbles, hoteles y experiencias en uno de los
             lugares más atractivos del Caribe.
           </p>
         </RevealOnScroll>
 
         {/* Destinos destacados y filtro */}
-        <div className="mt-10 flex flex-col items-center gap-4">
+        <div className="mt-8 flex flex-col items-center gap-4">
           <div
             className="flex flex-wrap items-center justify-center gap-2"
             role="tablist"
@@ -86,10 +86,10 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
         </div>
 
         {/* Grid de hoteles */}
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
           {filteredHotels.map((hotel, idx) => (
-            <RevealOnScroll key={hotel.id} delayMs={idx * 60}>
-              <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
+            <RevealOnScroll key={hotel.id} delayMs={idx * 55}>
+              <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                   <Image
                     src={hotel.image}

@@ -75,7 +75,7 @@ export function HomeClient() {
         <PackagesSection onSelectPackage={navigateToAdvisoryForm} />
 
         {/* CTA strip after Packages */}
-        <div className="bg-[#F4F6F8] py-10 border-y border-slate-200">
+        <div className="bg-[#F4F6F8] py-8 border-y border-slate-200">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
               <p className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
@@ -87,7 +87,7 @@ export function HomeClient() {
             </div>
             <a
               href="#contacto"
-              className="shrink-0 inline-flex items-center gap-2 rounded-md bg-[#C9A66B] px-7 py-3.5 text-sm font-bold text-[#102D52] shadow transition-all hover:bg-[#b8954f]"
+              className="shrink-0 inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[#C9A66B] px-7 py-3 text-sm font-bold text-[#102D52] shadow transition-all duration-200 hover:bg-[#b8954f] active:scale-[0.98]"
             >
               Solicita tu paquete personalizado
             </a>

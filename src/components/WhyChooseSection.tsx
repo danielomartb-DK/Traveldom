@@ -13,7 +13,7 @@ export function WhyChooseSection() {
   return (
     <section
       aria-labelledby="why-choose-heading"
-      className="bg-[#102D52] py-16 text-white lg:py-20"
+      className="bg-[#102D52] py-12 text-white lg:py-14"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto max-w-2xl text-center">
@@ -29,12 +29,12 @@ export function WhyChooseSection() {
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
         </RevealOnScroll>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {WHY_CHOOSE_BENEFITS.map((benefit, index) => {
             const Icon = benefitIcons[benefit.iconName];
             return (
-              <RevealOnScroll key={benefit.id} delayMs={index * 70}>
-                <div className="flex h-full flex-col items-center rounded-xl border border-white/10 bg-white/[0.04] p-6 text-center transition-colors hover:border-[#C9A66B]/40 hover:bg-white/[0.07]">
+              <RevealOnScroll key={benefit.id} delayMs={index * 60}>
+                <div className="flex h-full flex-col items-center rounded-xl border border-white/10 bg-white/[0.04] p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#C9A66B]/40 hover:bg-white/[0.07]">
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg border border-[#C9A66B]/40 bg-[#1D5B91]/40 text-[#C9A66B]">
                     <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
                   </div>

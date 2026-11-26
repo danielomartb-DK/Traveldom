@@ -183,7 +183,7 @@ export function AdvisoryFormSection({
   };
 
   return (
-    <section id="contacto" className="bg-white py-20 lg:py-24 scroll-mt-20">
+    <section id="contacto" className="bg-white py-12 lg:py-16 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
@@ -193,13 +193,13 @@ export function AdvisoryFormSection({
             Solicita asesoría o cotiza tu viaje
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-4 text-base text-slate-600">
+          <p className="mt-3 text-base text-slate-600">
             Completa tus datos para enviar tu consulta directamente por WhatsApp o
             correo electrónico a nuestros asesores.
           </p>
         </RevealOnScroll>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-12">
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Columna de información directa */}
           <RevealOnScroll className="lg:col-span-5 space-y-6">
             <div className="rounded-2xl border border-slate-200/80 bg-[#F4F6F8] p-6 sm:p-8">
@@ -615,7 +615,7 @@ export function AdvisoryFormSection({
                 <div
                   role="status"
                   aria-live="polite"
-                  className={`mt-5 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
+                  className={`mt-5 flex items-start gap-2.5 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
                     isSuccess
                       ? "border-green-300 bg-green-50 text-green-800"
                       : Object.keys(errors).length > 0
@@ -623,14 +623,28 @@ export function AdvisoryFormSection({
                         : "border-[#1D5B91]/30 bg-[#EAF4FC] text-[#102D52]"
                   }`}
                 >
-                  {statusMessage}
+                  {isSuccess && (
+                    <svg
+                      className="mt-0.5 h-4 w-4 shrink-0 text-green-600"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path className="animate-draw-check" d="M20 6 9 17l-5-5" />
+                    </svg>
+                  )}
+                  <span>{statusMessage}</span>
                 </div>
               )}
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <button
                   type="submit"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-[#102D52] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#1D5B91]"
+                  className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-md bg-[#102D52] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#1D5B91] active:scale-[0.98]"
                 >
                   <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   <span>Enviar por WhatsApp</span>
@@ -639,7 +653,7 @@ export function AdvisoryFormSection({
                 <button
                   type="button"
                   onClick={() => handleDispatch("email")}
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-[#1D5B91] bg-white px-5 py-3.5 text-sm font-semibold text-[#102D52] transition-colors hover:bg-[#EAF4FC]"
+                  className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-md border border-[#1D5B91] bg-white px-5 py-3.5 text-sm font-semibold text-[#102D52] transition-all duration-200 hover:bg-[#EAF4FC] active:scale-[0.98]"
                 >
                   <Send className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   <span>Enviar por correo</span>

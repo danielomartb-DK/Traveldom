@@ -59,7 +59,7 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
   };
 
   return (
-    <section id="servicios" className="bg-white py-20 lg:py-24 scroll-mt-20">
+    <section id="servicios" className="bg-white py-12 lg:py-16 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Encabezado centrado estilo Contixs */}
         <RevealOnScroll className="mx-auto max-w-2xl text-center">
@@ -70,18 +70,18 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
             Nuestros servicios
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+          <p className="mt-3 text-base text-slate-600 sm:text-lg">
             Soluciones integrales para tus planes de viaje
           </p>
         </RevealOnScroll>
 
         {/* Grid de 4 tarjetas */}
-        <div className="mt-14 grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-4">
           {SERVICES.map((service, index) => {
             const Icon = serviceIconMap[service.iconName];
             return (
-              <RevealOnScroll key={service.id} delayMs={index * 70}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[#1D5B91]/40 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
+              <RevealOnScroll key={service.id} delayMs={index * 60}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-[5px] hover:border-[#1D5B91]/40 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
                   {/* Fotografía real del servicio */}
                   <div className="relative h-44 w-full shrink-0 overflow-hidden bg-slate-100">
                     <Image

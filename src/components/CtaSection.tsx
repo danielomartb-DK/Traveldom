@@ -6,7 +6,7 @@ export function CtaSection() {
   return (
     <section
       aria-labelledby="final-cta-heading"
-      className="relative overflow-hidden bg-[#102D52] py-20 text-white lg:py-24"
+      className="relative overflow-hidden bg-[#102D52] py-14 text-white lg:py-16"
     >
       <Image
         src="/images/resort-palms-pool.jpg"
