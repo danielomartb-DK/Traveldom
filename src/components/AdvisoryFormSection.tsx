@@ -6,12 +6,11 @@ import {
   Mail,
   Phone,
   Clock,
-  MessageCircle,
-  Send,
   AlertCircle,
   ShieldCheck,
   ExternalLink,
 } from "lucide-react";
+import { WhatsAppIcon, GmailIcon } from "./SocialIcons";
 import { buildMailtoUrl, buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { SERVICE_FORM_OPTIONS } from "@/data/content";
 import { RevealOnScroll } from "./RevealOnScroll";
@@ -280,7 +279,7 @@ export function AdvisoryFormSection({
                   intensity="ligera"
                   className="w-full"
                 >
-                  <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+                  <WhatsAppIcon className="h-4 w-4 shrink-0" />
                   <span>Conversar por WhatsApp ahora</span>
                   <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
                 </BtnAvion>
@@ -653,7 +652,7 @@ export function AdvisoryFormSection({
                   intensity="completa"
                   className="flex-1"
                 >
-                  <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+                  <WhatsAppIcon className="h-4 w-4 shrink-0" />
                   <span>Enviar por WhatsApp</span>
                 </BtnAvion>
 
@@ -663,7 +662,7 @@ export function AdvisoryFormSection({
                   intensity="ligera"
                   onClick={() => handleDispatch("email")}
                 >
-                  <Send className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+                  <GmailIcon className="h-4 w-4 shrink-0" />
                   <span>Enviar por correo</span>
                 </BtnAvion>
               </div>

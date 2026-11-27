@@ -43,9 +43,9 @@ export function FaqSection() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => toggleItem(faq.id)}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-[#FAF7F2]/60"
+                    className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition-colors hover:bg-[#FAF7F2]/60 sm:gap-4 sm:px-6 sm:py-5"
                   >
-                    <span className="font-[family-name:var(--font-poppins)] text-base font-semibold text-[#102D52] sm:text-lg">
+                    <span className="font-[family-name:var(--font-poppins)] text-[15px] font-semibold text-[#102D52] sm:text-lg">
                       {faq.question}
                     </span>
                     <ChevronDown
@@ -70,7 +70,7 @@ export function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="border-t border-slate-100 px-6 py-4 text-[15px] leading-relaxed text-slate-600 sm:text-base">
+                    <div className="border-t border-slate-100 px-4 py-3.5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:py-4 sm:text-base">
                       {faq.answer}
                     </div>
                   </div>

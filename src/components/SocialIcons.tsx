@@ -56,6 +56,29 @@ export function LinkedInIcon({ className = "h-4 w-4" }: { className?: string }) 
   );
 }
 
+export function GmailIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Envelope body white so it pops cleanly on the red Gmail button */}
+      <rect x="2" y="4.5" width="20" height="15" rx="2.2" fill="#ffffff" />
+      {/* Classic Gmail M shape */}
+      <path
+        d="M4.5 17.5V7.5L12 13l7.5-5.5v10"
+        stroke="#D93025"
+        strokeWidth="2.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 export function SocialBrandIcon({
   name,
   className = "h-4 w-4",
