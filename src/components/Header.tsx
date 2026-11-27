@@ -71,7 +71,7 @@ export function Header() {
             className={`relative overflow-hidden rounded-[var(--radius-sm)] border bg-white shadow-xs transition-transform duration-300 ${
               isCompact || mobileOpen
                 ? "h-9 w-9 scale-95 border-slate-100"
-                : "h-11 w-11 scale-100 border-white/40"
+                : "h-9 w-9 sm:h-11 sm:w-11 scale-100 border-white/40"
             }`}
           >
             <Image
@@ -85,7 +85,7 @@ export function Header() {
           </div>
           <div className="flex flex-col leading-tight">
             <span
-              className={`font-[family-name:var(--font-poppins)] text-lg font-bold tracking-tight transition-colors ${
+              className={`font-[family-name:var(--font-poppins)] text-base sm:text-lg font-bold tracking-tight transition-colors ${
                 isCompact || mobileOpen
                   ? "text-[#102D52] group-hover:text-[#0E9AA7]"
                   : "text-white drop-shadow-[0_1px_6px_rgba(6,24,48,0.6)] group-hover:text-[#E3B963]"
@@ -94,7 +94,7 @@ export function Header() {
               Traveldom
             </span>
             <span
-              className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${
+              className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.18em] ${
                 isCompact || mobileOpen
                   ? "text-[#C9A66B]"
                   : "text-[#E3B963] drop-shadow-[0_1px_4px_rgba(6,24,48,0.6)]"

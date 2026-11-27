@@ -57,8 +57,9 @@ body {
   background-color: #ffffff;
   color: #1a2433;
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.0625rem; /* ~17px cuerpo base */
+  font-size: clamp(0.9375rem, 0.91rem + 0.18vw, 1.0625rem); /* 15px móvil -> 17px escritorio */
   line-height: 1.65;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -72,19 +73,19 @@ h6 {
   text-wrap: balance;
 }
 
-/* Escala tipográfica global para títulos de sección (2.25rem a 3.25rem) */
+/* Escala tipográfica global para títulos de sección (1.65rem en móvil a 3.1rem en escritorio) */
 .section-title {
   font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.25rem, 1.85rem + 1.6vw, 3.25rem);
+  font-size: clamp(1.65rem, 1.3rem + 1.75vw, 3.1rem);
   font-weight: 700;
-  line-height: 1.14;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
 /* Espaciado compacto y equilibrado entre secciones */
 .section-pad {
-  padding-block: clamp(2.25rem, 1.75rem + 1.25vw, 3.25rem);
+  padding-block: clamp(2rem, 1.65rem + 1.25vw, 3.25rem);
 }
 
 /* Fondos alternados con temática Caribe (arena cálida real y turquesa suave) */
@@ -181,116 +182,127 @@ textarea:focus-visible {
 }
 
 /* ================= BOTÓN AVIÓN (.btn-avion) ================= */
-.btn-avion {
-  position: relative;
-  isolation: isolate;
-  transform: translateZ(0);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0.85rem 1.85rem;
-  border: 0;
-  border-radius: 999px;
-  overflow: hidden;
-  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    box-shadow 0.25s ease,
-    transform 0.15s ease,
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-}
+@layer components {
+  .btn-avion {
+    position: relative;
+    isolation: isolate;
+    transform: translateZ(0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.72rem 1.35rem;
+    border: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      box-shadow 0.25s ease,
+      transform 0.15s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
 
-.btn-avion--primario {
-  background: linear-gradient(135deg, #d7b67b, #c9a66b);
-  color: #102d52;
-  font-weight: 700;
-  box-shadow:
-    0 10px 22px -10px rgba(201, 166, 107, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-}
+  @media (min-width: 640px) {
+    .btn-avion {
+      min-height: 46px;
+      padding: 0.85rem 1.85rem;
+      font-size: 0.9375rem;
+      line-height: 1.1;
+    }
+  }
 
-.btn-avion--primario:hover {
-  box-shadow:
-    0 16px 30px -10px rgba(201, 166, 107, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
-}
+  .btn-avion--primario {
+    background: linear-gradient(135deg, #d7b67b, #c9a66b);
+    color: #102d52;
+    font-weight: 700;
+    box-shadow:
+      0 10px 22px -10px rgba(201, 166, 107, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
 
-.btn-avion--oscuro {
-  background: linear-gradient(135deg, #1d5b91, #102d52);
-  color: #ffffff;
-  box-shadow:
-    0 10px 22px -10px rgba(16, 45, 82, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
-}
+  .btn-avion--primario:hover {
+    box-shadow:
+      0 16px 30px -10px rgba(201, 166, 107, 0.85),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
 
-.btn-avion--oscuro:hover {
-  box-shadow:
-    0 16px 30px -10px rgba(16, 45, 82, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
+  .btn-avion--oscuro {
+    background: linear-gradient(135deg, #1d5b91, #102d52);
+    color: #ffffff;
+    box-shadow:
+      0 10px 22px -10px rgba(16, 45, 82, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
 
-.btn-avion--turquesa {
-  background: linear-gradient(135deg, #0e9aa7, #0b7d88);
-  color: #ffffff;
-  box-shadow:
-    0 10px 22px -10px rgba(14, 154, 167, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-}
+  .btn-avion--oscuro:hover {
+    box-shadow:
+      0 16px 30px -10px rgba(16, 45, 82, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
 
-.btn-avion--turquesa:hover {
-  box-shadow:
-    0 16px 30px -10px rgba(14, 154, 167, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.36);
-}
+  .btn-avion--turquesa {
+    background: linear-gradient(135deg, #0e9aa7, #0b7d88);
+    color: #ffffff;
+    box-shadow:
+      0 10px 22px -10px rgba(14, 154, 167, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
 
-.btn-avion--whatsapp {
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow:
-    0 10px 22px -10px rgba(18, 140, 126, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
-}
+  .btn-avion--turquesa:hover {
+    box-shadow:
+      0 16px 30px -10px rgba(14, 154, 167, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.36);
+  }
 
-.btn-avion--whatsapp:hover {
-  box-shadow:
-    0 16px 30px -10px rgba(37, 211, 102, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-}
+  .btn-avion--whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow:
+      0 10px 22px -10px rgba(18, 140, 126, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
 
-.btn-avion--gmail {
-  background: linear-gradient(135deg, #ea4335, #c5221f);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow:
-    0 10px 22px -10px rgba(217, 48, 37, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
+  .btn-avion--whatsapp:hover {
+    box-shadow:
+      0 16px 30px -10px rgba(37, 211, 102, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
 
-.btn-avion--gmail:hover {
-  box-shadow:
-    0 16px 30px -10px rgba(234, 67, 53, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
+  .btn-avion--gmail {
+    background: linear-gradient(135deg, #ea4335, #c5221f);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow:
+      0 10px 22px -10px rgba(217, 48, 37, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
 
-.btn-avion--secundario {
-  background: #ffffff;
-  color: #102d52;
-  border: 1.5px solid #102d52;
-  box-shadow: 0 2px 8px rgba(16, 45, 82, 0.05);
-}
+  .btn-avion--gmail:hover {
+    box-shadow:
+      0 16px 30px -10px rgba(234, 67, 53, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
 
-.btn-avion--secundario:hover {
-  background: #eff9fa;
-  border-color: #0e9aa7;
-  box-shadow: 0 8px 20px -8px rgba(14, 154, 167, 0.25);
+  .btn-avion--secundario {
+    background: #ffffff;
+    color: #102d52;
+    border: 1.5px solid #102d52;
+    box-shadow: 0 2px 8px rgba(16, 45, 82, 0.05);
+  }
+
+  .btn-avion--secundario:hover {
+    background: #eff9fa;
+    border-color: #0e9aa7;
+    box-shadow: 0 8px 20px -8px rgba(14, 154, 167, 0.25);
+  }
 }
 
 .btn-avion:active {
