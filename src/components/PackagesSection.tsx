@@ -28,8 +28,8 @@ export function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
       className="w-full bg-gradient-to-b from-[#E5F6F8] via-[#EDF8FA] to-[#F3ECE1] section-pad scroll-mt-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Encabezado alineado a la izquierda */}
-        <RevealOnScroll className="max-w-2xl text-left">
+        {/* Encabezado centrado */}
+        <RevealOnScroll className="mx-auto max-w-2xl text-center">
           <span className="inline-block rounded-full bg-[#0E9AA7]/12 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0B7D88]">
             Experiencias planificadas
           </span>

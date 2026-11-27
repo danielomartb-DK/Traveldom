@@ -15,7 +15,7 @@ export function FaqSection() {
   return (
     <section id="preguntas-frecuentes" className="w-full bg-[#F3ECE1] section-pad scroll-mt-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <RevealOnScroll className="text-left">
+        <RevealOnScroll className="mx-auto max-w-2xl text-center">
           <h2 className="section-title text-[#102D52]">
             Preguntas frecuentes
           </h2>

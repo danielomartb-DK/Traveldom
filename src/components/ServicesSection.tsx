@@ -80,8 +80,8 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
         className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-[#0E9AA7]/10 blur-3xl"
       />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Encabezado alineado a la izquierda */}
-        <RevealOnScroll className="max-w-2xl text-left">
+        {/* Encabezado centrado */}
+        <RevealOnScroll className="mx-auto max-w-2xl text-center">
           <span className="inline-block rounded-full bg-[#0E9AA7]/12 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0B7D88]">
             Asesoría y gestión
           </span>
