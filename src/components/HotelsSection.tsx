@@ -86,7 +86,7 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
                 delayMs={idx * 60}
                 className="shrink-0 w-[85vw] sm:w-[68vw] snap-center md:w-auto"
               >
-                <article className="group flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[#102D52]/12 bg-white shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0E9AA7]/40 hover:shadow-[var(--shadow-elevated)]">
+                <article className="group flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[#102D52] border-t-[3px] border-t-[#C9A66B] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0E9AA7]/60">
                   {/* Fotografía limpia sin texto encima */}
                   <div className="relative h-56 w-full shrink-0 overflow-hidden bg-[#102D52] sm:h-60">
                     <Image
@@ -109,23 +109,23 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
                   {/* Cuerpo editorial limpio y respirable */}
                   <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
                     <div>
-                      <h3 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-[#102D52] sm:text-xl">
+                      <h3 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-white sm:text-xl">
                         {hotel.name}
                       </h3>
 
-                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#EAF4FC]/85">
                         {hotel.description}
                       </p>
 
                       <ul
                         aria-label={`Destacados de ${hotel.destination}`}
-                        className="mt-3.5 space-y-1.5 border-t border-slate-100 pt-3 text-xs font-medium text-slate-700"
+                        className="mt-3.5 space-y-1.5 border-t border-white/15 pt-3 text-xs font-medium text-[#EAF4FC]"
                       >
                         {highlights.map((item) => (
                           <li key={item} className="flex items-center gap-2">
                             <span
                               aria-hidden="true"
-                              className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#0E9AA7]"
+                              className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#E3B963]"
                             />
                             <span className="truncate">{item}</span>
                           </li>
@@ -155,7 +155,7 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
                               notes: `Quisiera consultar disponibilidad y opciones similares a ${hotel.name} en ${hotel.destination}.`,
                             })
                           }
-                          className="text-xs font-semibold text-[#0B7D88] underline-offset-4 transition-colors hover:text-[#102D52] hover:underline"
+                          className="text-xs font-semibold text-[#E3B963] underline-offset-4 transition-colors hover:text-white hover:underline"
                         >
                           Por formulario
                         </button>

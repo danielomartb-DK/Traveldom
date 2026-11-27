@@ -51,7 +51,7 @@ export function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
                 variant={isReversed ? "right" : "left"}
                 delayMs={idx * 75}
               >
-                <article className="group grid grid-cols-1 overflow-hidden rounded-[var(--radius-lg)] border border-[#102D52]/12 bg-white shadow-[var(--shadow-elevated)] transition-all duration-300 hover:-translate-y-[4px] hover:border-[#0E9AA7]/45 lg:grid-cols-12">
+                <article className="group grid grid-cols-1 overflow-hidden rounded-[var(--radius-lg)] border border-[#102D52] border-t-[3px] border-t-[#C9A66B] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] transition-all duration-300 hover:-translate-y-[4px] hover:border-[#0E9AA7]/60 lg:grid-cols-12">
                   {/* Fotografía grande o placeholder elegante (alternando izquierda/derecha en escritorio) */}
                   <div
                     className={`relative min-h-[260px] sm:min-h-[320px] lg:col-span-6 lg:min-h-[390px] overflow-hidden bg-slate-100 ${
@@ -98,34 +98,34 @@ export function PackagesSection({ onSelectPackage }: PackagesSectionProps) {
                   >
                     <div>
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E6F7F8] px-3 py-1 text-xs font-semibold text-[#102D52]">
-                          <Calendar className="h-3.5 w-3.5 text-[#0E9AA7]" strokeWidth={1.75} aria-hidden="true" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-[#EAF4FC]">
+                          <Calendar className="h-3.5 w-3.5 text-[#4DD0DC]" strokeWidth={1.75} aria-hidden="true" />
                           <span>{pkg.duration}</span>
                         </span>
 
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A66B]/40 bg-[#FAF7F2] px-3 py-1 text-xs font-semibold text-[#102D52]">
-                          <Tag className="h-3.5 w-3.5 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#C9A66B]/45 bg-[#C9A66B]/15 px-3 py-1 text-xs font-semibold text-[#F6DFB0]">
+                          <Tag className="h-3.5 w-3.5 text-[#E3B963]" strokeWidth={1.75} aria-hidden="true" />
                           <span>{pkg.priceLabel}</span>
                         </span>
                       </div>
 
-                      <h3 className="mt-4 font-[family-name:var(--font-poppins)] text-2xl font-bold text-[#102D52]">
+                      <h3 className="mt-4 font-[family-name:var(--font-poppins)] text-2xl font-bold text-white">
                         {pkg.title}
                       </h3>
 
-                      <p className="mt-3 text-[15px] leading-relaxed text-slate-600 sm:text-base">
+                      <p className="mt-3 text-[15px] leading-relaxed text-[#EAF4FC]/90 sm:text-base">
                         {pkg.description}
                       </p>
 
-                      <div className="mt-5 border-t border-slate-100 pt-4">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                      <div className="mt-5 border-t border-white/15 pt-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#E3B963]">
                           Servicios incluidos en la propuesta
                         </p>
-                        <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 text-[15px] text-slate-700">
+                        <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 text-[15px] text-[#EAF4FC]">
                           {pkg.includedServices.map((service) => (
                             <li key={service} className="flex items-start gap-2">
                               <Check
-                                className="mt-1 h-4 w-4 shrink-0 text-[#0E9AA7]"
+                                className="mt-1 h-4 w-4 shrink-0 text-[#E3B963]"
                                 strokeWidth={2.2}
                                 aria-hidden="true"
                               />
