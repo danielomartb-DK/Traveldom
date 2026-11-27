@@ -233,7 +233,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-419"
-      className={`${poppins.variable} ${inter.variable} h-full scroll-smooth`}
+      className={`${poppins.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-white text-[#1a2433] antialiased selection:bg-[#1D5B91] selection:text-white">
         <script

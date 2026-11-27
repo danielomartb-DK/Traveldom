@@ -1,5 +1,6 @@
-import { Clock, Mail, Phone, Globe, Share2 } from "lucide-react";
+import { Clock, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { SocialBrandIcon } from "./SocialIcons";
 
 export function TopBar() {
   return (
@@ -40,14 +41,10 @@ export function TopBar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.ariaLabel}
-                title={`${social.name} (placeholder)`}
-                className="inline-flex items-center gap-1 text-white/90 transition-colors hover:text-[#C9A66B]"
+                title={social.name}
+                className="inline-flex items-center gap-1.5 text-white/90 transition-colors hover:text-[#C9A66B]"
               >
-                {social.name === "Instagram" ? (
-                  <Globe className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-                ) : (
-                  <Share2 className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-                )}
+                <SocialBrandIcon name={social.name} className="h-3.5 w-3.5" />
                 <span className="text-[11px] font-medium">{social.name}</span>
               </a>
             ))}

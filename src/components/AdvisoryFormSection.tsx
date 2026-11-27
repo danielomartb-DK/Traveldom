@@ -15,6 +15,7 @@ import {
 import { buildMailtoUrl, buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { SERVICE_FORM_OPTIONS } from "@/data/content";
 import { RevealOnScroll } from "./RevealOnScroll";
+import { BtnAvion } from "./BtnAvion";
 
 export interface AdvisoryFormState {
   fullName: string;
@@ -183,30 +184,32 @@ export function AdvisoryFormSection({
   };
 
   return (
-    <section id="contacto" className="bg-white py-12 lg:py-16 scroll-mt-20">
+    <section
+      id="contacto"
+      className="w-full bg-gradient-to-b from-[#E5F6F8] to-[#F4F9FA] section-pad scroll-mt-20"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <RevealOnScroll className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
+          <span className="inline-block rounded-full bg-[#0E9AA7]/12 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0B7D88]">
             Atención personalizada
           </span>
-          <h2 className="mt-2 font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-[#102D52] sm:text-4xl">
+          <h2 className="section-title mt-3 text-[#102D52]">
             Solicita asesoría o cotiza tu viaje
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-base text-slate-600 sm:text-[1.0625rem]">
             Completa tus datos para enviar tu consulta directamente por WhatsApp o
             correo electrónico a nuestros asesores.
           </p>
         </RevealOnScroll>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
-          {/* Columna de información directa */}
-          <RevealOnScroll className="lg:col-span-5 space-y-6">
-            <div className="rounded-2xl border border-slate-200/80 bg-[#F4F6F8] p-6 sm:p-8">
-              <h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
+          {/* Columna de información directa en azul océano profundo */}
+          <RevealOnScroll variant="left" className="lg:col-span-5 space-y-6">
+            <div className="rounded-2xl border border-[#102D52] bg-[#102D52] p-6 text-white shadow-[var(--shadow-elevated)] sm:p-8">
+              <h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
                 Canales de contacto
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2 text-sm leading-relaxed text-[#EAF4FC]/85">
                 Estamos disponibles para orientarte sobre visas de turista,
                 trámites consulares, traducción de documentos, seguros y
                 planificación de viajes.
@@ -214,17 +217,17 @@ export function AdvisoryFormSection({
 
               <dl className="mt-6 space-y-4 text-sm">
                 <div className="flex items-start gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#1D5B91] shadow-xs">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-[#E3B963]">
                     <Mail className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-[#EAF4FC]/70">
                       Correo electrónico
                     </dt>
-                    <dd className="mt-0.5 font-medium text-[#102D52]">
+                    <dd className="mt-0.5 font-medium text-white">
                       <a
                         href={`mailto:${siteConfig.contact.email}`}
-                        className="hover:text-[#1D5B91] underline-offset-4 hover:underline"
+                        className="hover:text-[#E3B963] underline-offset-4 hover:underline"
                       >
                         {siteConfig.contact.email}
                       </a>
@@ -233,19 +236,19 @@ export function AdvisoryFormSection({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#1D5B91] shadow-xs">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-[#E3B963]">
                     <Phone className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-[#EAF4FC]/70">
                       Teléfono / WhatsApp
                     </dt>
-                    <dd className="mt-0.5 font-medium text-[#102D52]">
+                    <dd className="mt-0.5 font-medium text-white">
                       <a
                         href={buildWhatsAppUrl()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-[#1D5B91] underline-offset-4 hover:underline"
+                        className="hover:text-[#E3B963] underline-offset-4 hover:underline"
                       >
                         {siteConfig.contact.phoneDisplay}
                       </a>
@@ -254,58 +257,60 @@ export function AdvisoryFormSection({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-[#1D5B91] shadow-xs">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-[#E3B963]">
                     <Clock className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   </span>
                   <div>
-                    <dt className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-[#EAF4FC]/70">
                       Horario de atención
                     </dt>
-                    <dd className="mt-0.5 text-slate-700">
+                    <dd className="mt-0.5 text-[#EAF4FC]">
                       {siteConfig.contact.hours}
                     </dd>
                   </div>
                 </div>
               </dl>
 
-              <div className="mt-7 border-t border-slate-200 pt-6">
-                <a
+              <div className="mt-7 border-t border-white/15 pt-6">
+                <BtnAvion
                   href={buildWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#1D5B91] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#102D52]"
+                  variant="whatsapp"
+                  intensity="ligera"
+                  className="w-full"
                 >
                   <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   <span>Conversar por WhatsApp ahora</span>
                   <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
-                </a>
+                </BtnAvion>
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#C9A66B]/40 bg-[#EAF4FC]/60 p-5">
+            <div className="rounded-xl border border-[#0E9AA7]/25 bg-white p-5 shadow-[var(--shadow-card)]">
               <div className="flex items-start gap-3">
                 <ShieldCheck
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#102D52]"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[#0E9AA7]"
                   strokeWidth={1.75}
                   aria-hidden="true"
                 />
                 <div className="text-xs leading-relaxed text-[#102D52]">
                   <p className="font-semibold">Compromiso de transparencia</p>
-                  <p className="mt-1 text-slate-700">{siteConfig.legalDisclaimer}</p>
+                  <p className="mt-1 text-slate-600">{siteConfig.legalDisclaimer}</p>
                 </div>
               </div>
             </div>
           </RevealOnScroll>
 
           {/* Formulario de solicitud de asesoría */}
-          <RevealOnScroll className="lg:col-span-7" delayMs={80}>
+          <RevealOnScroll variant="right" className="lg:col-span-7" delayMs={100}>
             <form
               noValidate
               onSubmit={(e) => {
                 e.preventDefault();
                 handleDispatch("whatsapp");
               }}
-              className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-[0_10px_35px_rgba(16,45,82,0.06)] sm:p-8"
+              className="rounded-2xl border border-[#102D52]/12 bg-white p-6 shadow-[var(--shadow-elevated)] sm:p-8"
             >
               <h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
                 Formulario de solicitud de asesoría
@@ -337,8 +342,8 @@ export function AdvisoryFormSection({
                     placeholder="Ej. María Pérez"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.fullName
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.fullName && (
@@ -373,8 +378,8 @@ export function AdvisoryFormSection({
                     placeholder="correo@ejemplo.com"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.email
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.email && (
@@ -409,8 +414,8 @@ export function AdvisoryFormSection({
                     placeholder="Ej. +1 809 555 0100"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.whatsapp
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.whatsapp && (
@@ -444,8 +449,8 @@ export function AdvisoryFormSection({
                     placeholder="Ej. República Dominicana"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.country
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.country && (
@@ -476,8 +481,8 @@ export function AdvisoryFormSection({
                     aria-describedby={errors.service ? "error-service" : undefined}
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.service
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   >
                     {SERVICE_FORM_OPTIONS.map((option) => (
@@ -516,8 +521,8 @@ export function AdvisoryFormSection({
                     placeholder="Ej. Punta Cana, Estados Unidos, España"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.destination
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.destination && (
@@ -550,8 +555,8 @@ export function AdvisoryFormSection({
                     placeholder="Cuéntanos fechas estimadas, cantidad de personas o el tipo de orientación que necesitas..."
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.description
-                        ? "border-red-500 bg-red-50/40"
-                        : "border-slate-300 bg-white focus:border-[#1D5B91]"
+                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
                     }`}
                   />
                   {errors.description && (
@@ -642,22 +647,25 @@ export function AdvisoryFormSection({
               )}
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <button
+                <BtnAvion
                   type="submit"
-                  className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-md bg-[#102D52] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#1D5B91] active:scale-[0.98]"
+                  variant="whatsapp"
+                  intensity="completa"
+                  className="flex-1"
                 >
                   <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   <span>Enviar por WhatsApp</span>
-                </button>
+                </BtnAvion>
 
-                <button
+                <BtnAvion
                   type="button"
+                  variant="gmail"
+                  intensity="ligera"
                   onClick={() => handleDispatch("email")}
-                  className="inline-flex min-h-[46px] items-center justify-center gap-2 rounded-md border border-[#1D5B91] bg-white px-5 py-3.5 text-sm font-semibold text-[#102D52] transition-all duration-200 hover:bg-[#EAF4FC] active:scale-[0.98]"
                 >
                   <Send className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                   <span>Enviar por correo</span>
-                </button>
+                </BtnAvion>
               </div>
             </form>
           </RevealOnScroll>

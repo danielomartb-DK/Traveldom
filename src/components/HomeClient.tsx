@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { SERVICE_FORM_OPTIONS } from "@/data/content";
-import { TopBar } from "./TopBar";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { ServicesSection } from "./ServicesSection";
@@ -19,7 +18,10 @@ import {
 import { CtaSection } from "./CtaSection";
 import { Footer } from "./Footer";
 import { WhatsAppFloat } from "./WhatsAppFloat";
-import { ScrollToTop } from "./ScrollToTop";
+import { SectionDivider } from "./SectionDivider";
+import { ScrollFlightPath } from "./ScrollFlightPath";
+import { SmoothScroll } from "./SmoothScroll";
+import { AvionDefsAndController, BtnAvion } from "./BtnAvion";
 
 const initialFormState: AdvisoryFormState = {
   fullName: "",
@@ -66,43 +68,51 @@ export function HomeClient() {
 
   return (
     <>
-      <TopBar />
+      <SmoothScroll />
+      <AvionDefsAndController />
+      <ScrollFlightPath />
       <Header />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 w-full">
         <Hero />
         <ServicesSection onSelectAdvisory={navigateToAdvisoryForm} />
+        <SectionDivider variant="wave" fillColor="#f3ece1" bgColor="#e5f6f8" />
         <HotelsSection onConsultHotel={navigateToAdvisoryForm} />
         <PackagesSection onSelectPackage={navigateToAdvisoryForm} />
 
         {/* CTA strip after Packages */}
-        <div className="bg-[#F4F6F8] py-8 border-y border-slate-200">
+        <div className="w-full bg-[#F3ECE1] py-8 border-t border-[#C9A66B]/30">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
               <p className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
                 ¿No encontraste el paquete ideal?
               </p>
-              <p className="mt-1 text-sm text-slate-600">
+              <p className="mt-1 text-[15px] text-slate-700">
                 Diseñamos propuestas 100% personalizadas para ti.
               </p>
             </div>
-            <a
+            <BtnAvion
               href="#contacto"
-              className="shrink-0 inline-flex min-h-[44px] items-center gap-2 rounded-md bg-[#C9A66B] px-7 py-3 text-sm font-bold text-[#102D52] shadow transition-all duration-200 hover:bg-[#b8954f] active:scale-[0.98]"
+              variant="primario"
+              intensity="completa"
+              className="shrink-0"
             >
               Solicita tu paquete personalizado
-            </a>
+            </BtnAvion>
           </div>
         </div>
+        <SectionDivider variant="wave" fillColor="#102d52" bgColor="#f3ece1" />
         <WhyChooseSection />
+        <SectionDivider variant="wave" fillColor="#f3ece1" bgColor="#102d52" />
         <AboutSection />
+        <SectionDivider variant="diagonal" fillColor="#e5f6f8" bgColor="#f3ece1" />
         <TestimonialsSection />
         <FaqSection />
+        <SectionDivider variant="wave" fillColor="#e5f6f8" bgColor="#f3ece1" />
         <AdvisoryFormSection form={form} onChangeForm={handleFieldChange} />
         <CtaSection />
       </main>
       <Footer />
       <WhatsAppFloat />
-      <ScrollToTop />
     </>
   );
 }

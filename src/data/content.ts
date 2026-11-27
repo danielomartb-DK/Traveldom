@@ -100,7 +100,7 @@ export const SERVICES: ServiceItem[] = [
     transparencyNote:
       "Traveldom Soluciones brinda asesoría privada e independiente. No representamos a ninguna embajada o consulado y no garantizamos la aprobación de visas, ya que toda decisión corresponde exclusivamente a las autoridades competentes.",
     image: "/images/service-visa-turista.jpg",
-    imageAlt: "Solicitud de visa de turista: pasaporte, bandera americana y formulario sobre escritorio",
+    imageAlt: "Pasaporte abierto con sellos de viaje y visa internacional",
     formServiceValue: "Visa Estados Unidos",
     iconName: "FileCheck2",
   },
@@ -127,7 +127,7 @@ export const SERVICES: ServiceItem[] = [
     transparencyNote:
       "Este servicio es estrictamente informativo y de acompañamiento organizativo. No tenemos vínculos ni alianzas oficiales con consulados, embajadas ni organismos gubernamentales.",
     image: "/images/service-asesoria-consular.jpg",
-    imageAlt: "Asesoría consular: asesora entregando pasaporte a cliente en oficina luminosa",
+    imageAlt: "Asesora tomando notas junto a su computadora en oficina moderna",
     formServiceValue: "Asesoría consular",
     iconName: "Building2",
   },
@@ -154,7 +154,7 @@ export const SERVICES: ServiceItem[] = [
     transparencyNote:
       "Nota importante: Facilitamos traducciones de apoyo documental. No afirmamos que nuestras traducciones sean oficiales, judiciales o certificadas salvo confirmación explícita previa según los requisitos de la institución receptora.",
     image: "/images/service-traduccion-documentos.jpg",
-    imageAlt: "Traducción de documentos: traductora firmando acta notarial en oficina de servicios internacionales",
+    imageAlt: "Revisión y firma de documentos con bolígrafo sobre escritorio moderno",
     formServiceValue: "Traducción de documentos",
     iconName: "Languages",
   },
@@ -181,7 +181,7 @@ export const SERVICES: ServiceItem[] = [
     transparencyNote:
       "Los alcances, montos máximos, exclusiones y condiciones dependen íntegramente de la póliza seleccionada y de la aseguradora correspondiente.",
     image: "/images/service-seguros-viaje.jpg",
-    imageAlt: "Seguros de viaje: pasaporte, avión de juguete, billetes de avión y estetoscopio sobre formulario de seguro",
+    imageAlt: "Ala de avión volando sobre nubes blancas y cielo azul",
     formServiceValue: "Seguro de viaje",
     iconName: "ShieldCheck",
   },
@@ -199,10 +199,10 @@ export const RD_DESTINATIONS = [
 export const HOTELS_RD: HotelItem[] = [
   {
     id: "hotel-demo-1",
-    name: "Hotel Demo 1 — Resort Frente al Mar",
+    name: "Resort Frente al Mar",
     destination: "Punta Cana",
     description:
-      "Propiedad de demostración frente a aguas turquesas, pensada para estadías familiares o en pareja con amplias zonas de piscina y acceso directo a la playa.",
+      "Estadía frente a aguas turquesas, pensada para viajes familiares o en pareja con amplias zonas de piscina y acceso directo a la playa.",
     features: [
       "Acceso directo a playa de arena blanca",
       "Piscinas exteriores y áreas de descanso",
@@ -211,14 +211,14 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/resort-aerial-punta-cana.jpg",
     imageAlt: "Vista aérea de resort frente al mar con piscinas y palmeras en Punta Cana",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "hotel-demo-2",
-    name: "Hotel Demo 2 — Club Tropical & Palapa",
+    name: "Club Tropical & Palapa",
     destination: "Bávaro",
     description:
-      "Alojamiento de demostración rodeado de palmeras caribeñas y amplias terrazas junto a la piscina, ideal para desconectar bajo el sol de Bávaro.",
+      "Alojamiento rodeado de palmeras caribeñas y amplias terrazas junto a la piscina, ideal para desconectar bajo el sol de Bávaro.",
     features: [
       "Piscina central con área de palapa",
       "Tumbonas y jardines tropicales",
@@ -227,14 +227,14 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/resort-palapa-pool.jpg",
     imageAlt: "Piscina de resort rodeada de palmeras y palapa en Bávaro",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "hotel-demo-3",
-    name: "Hotel Demo 3 — Laguna Caribeña",
+    name: "Laguna Caribeña",
     destination: "Bayahíbe",
     description:
-      "Ejemplo de resort costero en ambiente sereno, con piscina estilo laguna rodeada de vegetación tropical y cercanía a excursiones marítimas.",
+      "Resort costero en ambiente sereno, con piscina estilo laguna rodeada de vegetación tropical y cercanía a excursiones marítimas.",
     features: [
       "Piscina panorámica estilo laguna",
       "Entorno tranquilo cercano al mar",
@@ -243,14 +243,14 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/resort-lagoon-pool.jpg",
     imageAlt: "Piscina estilo laguna con aguas turquesas y palmeras en Bayahíbe",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "hotel-demo-4",
-    name: "Hotel Demo 4 — Oasis Costero",
+    name: "Oasis Costero",
     destination: "Puerto Plata",
     description:
-      "Referencia demostrativa de hospedaje en la costa norte dominicana, combinando arquitectura abierta, brisa marina y amplios espacios al aire libre.",
+      "Hospedaje en la costa norte dominicana, combinando arquitectura abierta, brisa marina y amplios espacios al aire libre.",
     features: [
       "Piscina amplia con islas de palmeras",
       "Cercanía a atractivos de la costa norte",
@@ -259,14 +259,14 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/resort-palms-pool.jpg",
     imageAlt: "Resort caribeño con piscina amplia y palmeras bajo cielo azul en Puerto Plata",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "hotel-demo-5",
-    name: "Hotel Demo 5 — Patio Colonial Boutique",
+    name: "Patio Colonial Boutique",
     destination: "Santo Domingo",
     description:
-      "Propiedad de demostración inspirada en el encanto histórico de Santo Domingo, con arcos de ladrillo, patio interior y piscina privada de descanso.",
+      "Propiedad inspirada en el encanto histórico de Santo Domingo, con arcos de ladrillo, patio interior y piscina privada de descanso.",
     features: [
       "Arquitectura colonial con arcos de ladrillo",
       "Patio interior con piscina de inmersión",
@@ -275,14 +275,14 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/hotel-colonial-patio-1.jpg",
     imageAlt: "Patio interior colonial de ladrillo con piscina boutique en Santo Domingo",
-    isDemo: true,
+    isDemo: false,
   },
   {
     id: "hotel-demo-6",
-    name: "Hotel Demo 6 — Casa Histórica Colonial",
+    name: "Casa Histórica Colonial",
     destination: "Santo Domingo",
     description:
-      "Espacio boutique de demostración que combina tradición arquitectónica, vegetación tropical y confort moderno en el corazón histórico de la ciudad.",
+      "Espacio boutique que combina tradición arquitectónica, vegetación tropical y confort moderno en el corazón histórico de la ciudad.",
     features: [
       "Ambiente íntimo y atención cercana",
       "Terraza soleada con tumbonas y piscina",
@@ -291,7 +291,7 @@ export const HOTELS_RD: HotelItem[] = [
     ],
     image: "/images/hotel-colonial-patio-2.jpg",
     imageAlt: "Terraza colonial con tumbonas verdes y piscina en Santo Domingo",
-    isDemo: true,
+    isDemo: false,
   },
 ];
 
@@ -346,8 +346,8 @@ export const PACKAGES: PackageItem[] = [
       "Asistencia informativa previa a la salida",
     ],
     priceLabel: "Solicitar cotización",
-    image: "/images/package-europa.jpg",
-    imageAlt: "Torre Eiffel en París y vistas panorámicas de ciudades de Europa",
+    image: "/images/madrid-spain.jpg",
+    imageAlt: "Gran Vía y Edificio Metrópolis iluminados en Madrid, España",
     destinationValue: "España / Europa",
   },
   {
@@ -372,17 +372,17 @@ export const PACKAGES: PackageItem[] = [
 
 export const WHY_CHOOSE_BENEFITS: BenefitItem[] = [
   {
-    id: "atencion-personalizada",
-    title: "Atención personalizada",
+    id: "planificacion-estructurada",
+    title: "Planificación estructurada",
     description:
-      "Escuchamos tu necesidad específica y adaptamos nuestra orientación a tu perfil, fechas y destino.",
+      "Organizamos rutas, fechas y alternativas de viaje adaptadas a tu objetivo y presupuesto.",
     iconName: "UserCheck",
   },
   {
-    id: "orientacion-proceso",
-    title: "Orientación durante el proceso",
+    id: "preparacion-documental",
+    title: "Preparación documental",
     description:
-      "Te acompañamos paso a paso para que prepares tu documentación e itinerario con claridad y orden.",
+      "Te ayudamos a ordenar requisitos y formularios con claridad antes de cada trámite.",
     iconName: "Compass",
   },
   {

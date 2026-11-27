@@ -11,9 +11,11 @@ import {
   X,
   ArrowRight,
   Info,
+  ChevronDown,
 } from "lucide-react";
 import { SERVICES, type ServiceItem } from "@/data/content";
 import { RevealOnScroll } from "./RevealOnScroll";
+import { BtnAvion } from "./BtnAvion";
 
 interface ServicesSectionProps {
   onSelectAdvisory: (prefill: { service: string; notes?: string }) => void;
@@ -28,6 +30,16 @@ const serviceIconMap = {
 
 export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
   const [activeService, setActiveService] = useState<ServiceItem | null>(null);
+  const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({
+    "solicitud-visa": true,
+  });
+
+  const toggleExpanded = (id: string) => {
+    setExpandedIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   useEffect(() => {
     if (!activeService) return;
@@ -59,87 +71,188 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
   };
 
   return (
-    <section id="servicios" className="bg-white py-12 lg:py-16 scroll-mt-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Encabezado centrado estilo Contixs */}
-        <RevealOnScroll className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
+    <section
+      id="servicios"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#EAF7F8] to-[#E5F6F8] section-pad scroll-mt-20"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-[#0E9AA7]/10 blur-3xl"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Encabezado alineado a la izquierda */}
+        <RevealOnScroll className="max-w-2xl text-left">
+          <span className="inline-block rounded-full bg-[#0E9AA7]/12 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0B7D88]">
             Asesoría y gestión
           </span>
-          <h2 className="mt-2 font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-[#102D52] sm:text-4xl">
+          <h2 className="section-title mt-3 text-[#102D52]">
             Nuestros servicios
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-3 text-base text-slate-600 sm:text-lg">
+          <p className="mt-3 text-base text-slate-600 sm:text-[1.0625rem]">
             Soluciones integrales para tus planes de viaje
           </p>
         </RevealOnScroll>
 
-        {/* Grid de 4 tarjetas */}
-        <div className="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-4">
+        {/* Tarjeta principal destacada en azul marino + 3 servicios en fila equilibrada */}
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
           {SERVICES.map((service, index) => {
             const Icon = serviceIconMap[service.iconName];
+            const isFeatured = service.id === "solicitud-visa";
+            const isExpanded = Boolean(expandedIds[service.id]);
+            const panelId = `service-includes-${service.id}`;
+
+            const spanClass = isFeatured
+              ? "md:col-span-2 lg:col-span-12"
+              : "md:col-span-1 lg:col-span-4";
+
             return (
-              <RevealOnScroll key={service.id} delayMs={index * 60}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-[5px] hover:border-[#1D5B91]/40 hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
-                  {/* Fotografía real del servicio */}
-                  <div className="relative h-44 w-full shrink-0 overflow-hidden bg-slate-100">
+              <RevealOnScroll
+                key={service.id}
+                variant="scale"
+                delayMs={index * 75}
+                className={spanClass}
+              >
+                <article
+                  className={`group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] border transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[var(--shadow-elevated)] ${
+                    isFeatured
+                      ? "border-[#102D52] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] lg:flex-row"
+                      : "border-[#102D52]/12 border-t-[3px] border-t-[#0E9AA7] bg-white shadow-[var(--shadow-card)] hover:border-[#0E9AA7]/45"
+                  }`}
+                >
+                  {/* Fotografía nítida sin oscurecimiento excesivo */}
+                  <div
+                    className={`relative shrink-0 overflow-hidden bg-slate-200 ${
+                      isFeatured
+                        ? "aspect-[16/10] w-full lg:aspect-auto lg:w-[45%] lg:min-h-[360px]"
+                        : "aspect-[16/10] w-full"
+                    }`}
+                  >
                     <Image
                       src={service.image}
                       alt={service.imageAlt}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                      sizes={
+                        isFeatured
+                          ? "(max-width: 1024px) 100vw, 45vw"
+                          : "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      }
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    {/* Overlay sutil de marca */}
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-[#102D52]/30 via-transparent to-transparent"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#102D52]/30 to-transparent"
                     />
-                  </div>
 
-                  <div className="flex flex-1 flex-col p-6">
-                    {/* Ícono minimalista cuadrado estilo Contixs */}
-                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-[#1D5B91]/20 bg-[#EAF4FC] text-[#102D52]">
-                      <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+                    {/* Insignia de ícono sobre la fotografía */}
+                    <div className="absolute bottom-3.5 left-3.5 z-10 inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-sm)] border border-white/50 bg-white/95 text-[#102D52] shadow-sm backdrop-blur-xs">
+                      <Icon className="h-5 w-5 text-[#0E9AA7]" strokeWidth={1.9} aria-hidden="true" />
                     </div>
 
-                    <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-[#102D52]">
-                      {service.title}
-                    </h3>
-
-                    {service.subtitle && (
-                      <p className="mt-1 text-xs font-semibold text-[#1D5B91]">
-                        {service.subtitle}
-                      </p>
+                    {isFeatured && (
+                      <span className="absolute top-4 left-4 z-10 inline-flex items-center rounded-full bg-[#C9A66B] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#102D52] shadow-xs">
+                        Servicio principal
+                      </span>
                     )}
+                  </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                      {service.shortDescription}
-                    </p>
+                  <div className="flex flex-1 flex-col justify-between p-6 sm:p-7">
+                    <div>
+                      <h3
+                        className={`font-[family-name:var(--font-poppins)] text-xl font-bold ${
+                          isFeatured ? "text-2xl text-white" : "text-[#102D52]"
+                        }`}
+                      >
+                        {service.title}
+                      </h3>
 
-                    <ul className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-xs text-slate-700">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <Check
-                            className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#C9A66B]"
-                            strokeWidth={2.2}
+                      {service.subtitle && (
+                        <p
+                          className={`mt-1 text-xs font-semibold tracking-wide ${
+                            isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
+                          }`}
+                        >
+                          {service.subtitle}
+                        </p>
+                      )}
+
+                      <p
+                        className={`mt-3 text-[15px] leading-relaxed sm:text-base ${
+                          isFeatured ? "text-[#EAF4FC]/90" : "text-slate-600"
+                        }`}
+                      >
+                        {service.shortDescription}
+                      </p>
+
+                      {/* Acordeón accesible "Ver qué incluye" */}
+                      <div
+                        className={`mt-4 border-t pt-3 ${
+                          isFeatured ? "border-white/15" : "border-slate-200/70"
+                        }`}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => toggleExpanded(service.id)}
+                          aria-expanded={isExpanded}
+                          aria-controls={panelId}
+                          className={`flex w-full items-center justify-between gap-2 rounded-[var(--radius-sm)] py-1.5 text-left text-sm font-semibold transition-colors ${
+                            isFeatured
+                              ? "text-white hover:text-[#E3B963]"
+                              : "text-[#102D52] hover:text-[#0E9AA7]"
+                          }`}
+                        >
+                          <span>Ver qué incluye</span>
+                          <ChevronDown
+                            className={`h-4 w-4 shrink-0 transition-transform duration-300 motion-reduce:transition-none ${
+                              isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
+                            } ${isExpanded ? "rotate-180" : "rotate-0"}`}
+                            strokeWidth={2}
                             aria-hidden="true"
                           />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                        </button>
 
-                    <div className="mt-6 pt-2">
-                      <button
+                        <div
+                          id={panelId}
+                          aria-hidden={!isExpanded}
+                          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none ${
+                            isExpanded
+                              ? "grid-rows-[1fr] opacity-100"
+                              : "grid-rows-[0fr] opacity-0"
+                          }`}
+                        >
+                          <div className="overflow-hidden">
+                            <ul
+                              className={`space-y-2 pt-2.5 pb-1 text-[15px] ${
+                                isFeatured ? "text-[#EAF4FC]" : "text-slate-700"
+                              }`}
+                            >
+                              {service.features.map((feature) => (
+                                <li key={feature} className="flex items-start gap-2.5">
+                                  <Check
+                                    className={`mt-1 h-4 w-4 shrink-0 ${
+                                      isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
+                                    }`}
+                                    strokeWidth={2.2}
+                                    aria-hidden="true"
+                                  />
+                                  <span>{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 pt-1">
+                      <BtnAvion
                         type="button"
+                        variant={isFeatured ? "primario" : "turquesa"}
+                        intensity={isFeatured ? "completa" : "ligera"}
                         onClick={() => setActiveService(service)}
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#102D52] bg-white px-4 py-2.5 text-sm font-semibold text-[#102D52] transition-colors hover:bg-[#102D52] hover:text-white"
+                        className="w-full sm:w-auto"
                       >
-                        <span>Más información</span>
-                        <ArrowRight className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-                      </button>
+                        Más información
+                      </BtnAvion>
                     </div>
                   </div>
                 </article>

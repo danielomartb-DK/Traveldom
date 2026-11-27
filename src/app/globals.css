@@ -3,10 +3,30 @@
 :root {
   --background: #ffffff;
   --foreground: #102d52;
+
+  /* Paleta corporativa + acentos extraídos de la portada */
   --brand-navy: #102d52;
   --brand-blue: #1d5b91;
   --brand-gold: #c9a66b;
+  --brand-gold-hover: #b8954f;
+  --brand-turquoise: #0e9aa7;
+  --brand-turquoise-light: #e6f7f8;
+  --brand-sand: #faf7f2;
+  --brand-sand-warm: #f3ece1;
   --brand-surface: #f4f6f8;
+
+  /* 3 radios consistentes */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+
+  /* Sombras suaves multicapa */
+  --shadow-card:
+    0 1px 2px rgba(16, 45, 82, 0.04),
+    0 8px 24px -4px rgba(16, 45, 82, 0.07);
+  --shadow-elevated:
+    0 4px 8px rgba(16, 45, 82, 0.06),
+    0 18px 40px -8px rgba(16, 45, 82, 0.12);
 }
 
 @theme inline {
@@ -15,13 +35,16 @@
   --color-navy: var(--brand-navy);
   --color-corporate: var(--brand-blue);
   --color-gold: var(--brand-gold);
+  --color-turquoise: var(--brand-turquoise);
+  --color-sand: var(--brand-sand);
   --color-surface: var(--brand-surface);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  font-size: 16px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -34,6 +57,8 @@ body {
   background-color: #ffffff;
   color: #1a2433;
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem; /* ~17px cuerpo base */
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -44,6 +69,31 @@ h4,
 h5,
 h6 {
   font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  text-wrap: balance;
+}
+
+/* Escala tipográfica global para títulos de sección (2.25rem a 3.25rem) */
+.section-title {
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.25rem, 1.85rem + 1.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Espaciado compacto y equilibrado entre secciones */
+.section-pad {
+  padding-block: clamp(2.25rem, 1.75rem + 1.25vw, 3.25rem);
+}
+
+/* Fondos alternados con temática Caribe (arena cálida real y turquesa suave) */
+.bg-sand-turquoise {
+  background: linear-gradient(180deg, #f3ece1 0%, #e5f6f8 100%);
+}
+
+.bg-turquoise-sand {
+  background: linear-gradient(180deg, #e5f6f8 0%, #f3ece1 100%);
 }
 
 /* Foco accesible AA */
@@ -52,22 +102,35 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #c9a66b;
+  outline: 2px solid var(--brand-turquoise);
   outline-offset: 2px;
 }
 
-/* Animación sutil de entrada al hacer scroll (150ms - 400ms) */
+/* Animación suave de aparición al deslizar hacia abajo */
 .reveal-base {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translate3d(0, 34px, 0) scale(0.985);
   transition:
-    opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left {
+  transform: translate3d(-24px, 14px, 0) scale(0.985);
+}
+
+.reveal-right {
+  transform: translate3d(24px, 14px, 0) scale(0.985);
+}
+
+.reveal-scale {
+  transform: translate3d(0, 26px, 0) scale(0.96);
 }
 
 .reveal-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Animación sutil para el titular principal del Hero */
@@ -114,5 +177,580 @@ textarea:focus-visible {
   .animate-draw-check {
     stroke-dashoffset: 0;
     animation: none;
+  }
+}
+
+/* ================= BOTÓN AVIÓN (.btn-avion) ================= */
+.btn-avion {
+  position: relative;
+  isolation: isolate;
+  transform: translateZ(0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.85rem 1.85rem;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.15s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-avion--primario {
+  background: linear-gradient(135deg, #d7b67b, #c9a66b);
+  color: #102d52;
+  font-weight: 700;
+  box-shadow:
+    0 10px 22px -10px rgba(201, 166, 107, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-avion--primario:hover {
+  box-shadow:
+    0 16px 30px -10px rgba(201, 166, 107, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.btn-avion--oscuro {
+  background: linear-gradient(135deg, #1d5b91, #102d52);
+  color: #ffffff;
+  box-shadow:
+    0 10px 22px -10px rgba(16, 45, 82, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.btn-avion--oscuro:hover {
+  box-shadow:
+    0 16px 30px -10px rgba(16, 45, 82, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-avion--turquesa {
+  background: linear-gradient(135deg, #0e9aa7, #0b7d88);
+  color: #ffffff;
+  box-shadow:
+    0 10px 22px -10px rgba(14, 154, 167, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.btn-avion--turquesa:hover {
+  box-shadow:
+    0 16px 30px -10px rgba(14, 154, 167, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+}
+
+.btn-avion--whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow:
+    0 10px 22px -10px rgba(18, 140, 126, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-avion--whatsapp:hover {
+  box-shadow:
+    0 16px 30px -10px rgba(37, 211, 102, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-avion--gmail {
+  background: linear-gradient(135deg, #ea4335, #c5221f);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow:
+    0 10px 22px -10px rgba(217, 48, 37, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-avion--gmail:hover {
+  box-shadow:
+    0 16px 30px -10px rgba(234, 67, 53, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-avion--secundario {
+  background: #ffffff;
+  color: #102d52;
+  border: 1.5px solid #102d52;
+  box-shadow: 0 2px 8px rgba(16, 45, 82, 0.05);
+}
+
+.btn-avion--secundario:hover {
+  background: #eff9fa;
+  border-color: #0e9aa7;
+  box-shadow: 0 8px 20px -8px rgba(14, 154, 167, 0.25);
+}
+
+.btn-avion:active {
+  transform: translateZ(0) scale(0.97);
+}
+
+.btn-avion:focus-visible {
+  outline: 3px solid var(--brand-turquoise);
+  outline-offset: 3px;
+}
+
+.btn-avion .texto {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-avion .brillo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  z-index: 0;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.32),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.btn-avion .chispas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.btn-avion .chispas i {
+  position: absolute;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    currentColor 25%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0);
+}
+
+.btn-avion .vuelo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateX(calc(-100% - 0.5rem));
+}
+
+.btn-avion .eco.e1 {
+  opacity: 0.32;
+}
+
+.btn-avion .eco.e2 {
+  opacity: 0.18;
+}
+
+.btn-avion .altura {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.75rem;
+}
+
+.btn-avion .avion {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.btn-avion .sombra {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 1.5rem;
+  height: 0.5rem;
+  margin-top: 0.52rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(5, 15, 50, 0.45),
+    rgba(5, 15, 50, 0)
+  );
+}
+
+.btn-avion .altura::before,
+.btn-avion .altura::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to left, currentColor, transparent);
+  transform-origin: right center;
+}
+
+.btn-avion .altura::before {
+  top: 34%;
+  width: 3.8rem;
+  opacity: 0.75;
+}
+
+.btn-avion .altura::after {
+  top: 68%;
+  width: 2.3rem;
+  opacity: 0.45;
+}
+
+.btn-avion .eco .altura::before,
+.btn-avion .eco .altura::after {
+  display: none;
+}
+
+.btn-avion:not(.btn-avion--ligera)::after {
+  content: "";
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.42);
+  opacity: 0;
+  transform: scale(0);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.btn-avion.volando .vuelo,
+.btn-avion:hover .vuelo {
+  animation: avionVuelo 1.9s cubic-bezier(0.32, 0.1, 0.6, 0.92);
+  will-change: transform;
+}
+
+.btn-avion.volando .altura,
+.btn-avion:hover .altura {
+  animation: avionAltura 1.9s ease-in-out;
+  will-change: transform;
+}
+
+.btn-avion.volando .avion,
+.btn-avion:hover .avion {
+  animation: avionGiro 1.9s ease-in-out;
+}
+
+.btn-avion.volando .sombra,
+.btn-avion:hover .sombra {
+  animation: avionSombra 1.9s ease-in-out;
+}
+
+.btn-avion.volando .altura::before,
+.btn-avion.volando .altura::after,
+.btn-avion:hover .altura::before,
+.btn-avion:hover .altura::after {
+  animation: avionEstela 1.9s ease-in-out;
+}
+
+.btn-avion.volando .brillo,
+.btn-avion:hover .brillo {
+  animation: avionBrillo 1.6s cubic-bezier(0.32, 0.1, 0.6, 0.92) 0.12s;
+}
+
+.btn-avion.volando .texto,
+.btn-avion:hover .texto {
+  animation: avionTexto 1.9s ease-in-out;
+}
+
+.btn-avion.volando .chispas i,
+.btn-avion:hover .chispas i {
+  animation: avionChispa 0.8s ease-out var(--d, 0s) both;
+}
+
+.btn-avion.onda:not(.btn-avion--ligera)::after {
+  animation: avionOnda 0.8s ease-out;
+}
+
+.btn-avion.volando .e1,
+.btn-avion.volando .e1 .altura,
+.btn-avion.volando .e1 .avion,
+.btn-avion:hover .e1,
+.btn-avion:hover .e1 .altura,
+.btn-avion:hover .e1 .avion {
+  animation-delay: 0.09s;
+}
+
+.btn-avion.volando .e2,
+.btn-avion.volando .e2 .altura,
+.btn-avion.volando .e2 .avion,
+.btn-avion:hover .e2,
+.btn-avion:hover .e2 .altura,
+.btn-avion:hover .e2 .avion {
+  animation-delay: 0.18s;
+}
+
+.btn-avion.reinicio,
+.btn-avion.reinicio *,
+.btn-avion.reinicio *::before,
+.btn-avion.reinicio *::after,
+.btn-avion.reinicio::after {
+  animation: none !important;
+}
+
+@keyframes avionVuelo {
+  from {
+    transform: translateX(calc(-100% - 0.5rem));
+  }
+  to {
+    transform: translateX(6rem);
+  }
+}
+
+@keyframes avionAltura {
+  0% {
+    transform: translateY(0.5rem);
+  }
+  50% {
+    transform: translateY(-0.32rem);
+  }
+  100% {
+    transform: translateY(0.38rem);
+  }
+}
+
+@keyframes avionGiro {
+  0% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+  50% {
+    transform: scale(1.35) rotate(0deg);
+  }
+  100% {
+    transform: scale(0.9) rotate(7deg);
+  }
+}
+
+@keyframes avionSombra {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(0.42rem) scale(0.65);
+    opacity: 0.4;
+  }
+}
+
+@keyframes avionEstela {
+  0% {
+    transform: scaleX(0.25);
+  }
+  40%,
+  75% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes avionBrillo {
+  to {
+    transform: translateX(420%) skewX(-20deg);
+  }
+}
+
+@keyframes avionTexto {
+  0%,
+  28%,
+  56%,
+  100% {
+    transform: none;
+  }
+  42% {
+    transform: translateY(-0.08rem) scale(1.03);
+  }
+}
+
+@keyframes avionChispa {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(0.05rem, calc(var(--dy, -0.75rem) * 0.2)) scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(0.35rem, var(--dy, -0.75rem)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes avionOnda {
+  0% {
+    transform: scale(0);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(26);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-avion .eco,
+  .btn-avion .chispas {
+    display: none;
+  }
+  .btn-avion.volando .altura,
+  .btn-avion:hover .altura,
+  .btn-avion.volando .avion,
+  .btn-avion:hover .avion,
+  .btn-avion.volando .sombra,
+  .btn-avion:hover .sombra,
+  .btn-avion.volando .brillo,
+  .btn-avion:hover .brillo,
+  .btn-avion.volando .texto,
+  .btn-avion:hover .texto,
+  .btn-avion.volando .altura::before,
+  .btn-avion.volando .altura::after,
+  .btn-avion:hover .altura::before,
+  .btn-avion:hover .altura::after,
+  .btn-avion.onda::after {
+    animation: none !important;
+  }
+  .btn-avion.volando .vuelo,
+  .btn-avion:hover .vuelo {
+    animation-duration: 1.1s;
+  }
+}
+
+/* ================= FASE 3 · HERO RUTA Y FLOTACIÓN SUTIL ================= */
+@keyframes drawRouteOnce {
+  from {
+    stroke-dashoffset: 260;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes routePlaneAppear {
+  from {
+    opacity: 0;
+    transform: translate(-12px, 4px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes subtleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-route-line {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: drawRouteOnce 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.hero-route-plane {
+  opacity: 0;
+  animation: routePlaneAppear 0.5s ease-out 0.95s forwards;
+}
+
+.hero-float-card {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+.hero-float-card--delayed {
+  animation: subtleFloat 6s ease-in-out 1.8s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-route-line {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .hero-route-plane {
+    opacity: 1;
+    animation: none;
+  }
+  .hero-float-card,
+  .hero-float-card--delayed {
+    animation: none;
+  }
+}
+
+/* ================= FASE 10 · GANCHO DE MARCA LIGADO AL SCROLL ================= */
+.scroll-flight-bar {
+  transform: scaleX(0);
+}
+
+.scroll-flight-plane {
+  transform: translateY(0);
+}
+
+@supports (animation-timeline: scroll()) {
+  @keyframes scrollFlightProgress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes scrollFlightPlaneMove {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(204px);
+    }
+  }
+
+  .scroll-flight-bar {
+    animation: scrollFlightProgress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .scroll-flight-plane {
+    animation: scrollFlightPlaneMove linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-flight-bar,
+  .scroll-flight-plane {
+    animation: none !important;
+    transform: none !important;
   }
 }

@@ -6,12 +6,21 @@ interface RevealOnScrollProps {
   children: React.ReactNode;
   className?: string;
   delayMs?: number;
+  variant?: "up" | "left" | "right" | "scale";
 }
+
+const variantClassMap: Record<NonNullable<RevealOnScrollProps["variant"]>, string> = {
+  up: "",
+  left: "reveal-left",
+  right: "reveal-right",
+  scale: "reveal-scale",
+};
 
 export function RevealOnScroll({
   children,
   className = "",
   delayMs = 0,
+  variant = "up",
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +42,7 @@ export function RevealOnScroll({
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -24px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
 
     observer.observe(el);
@@ -44,7 +53,9 @@ export function RevealOnScroll({
     <div
       ref={ref}
       style={{ transitionDelay: `${delayMs}ms` }}
-      className={`reveal-base ${isVisible ? "reveal-visible" : ""} ${className}`}
+      className={`reveal-base ${variantClassMap[variant]} ${
+        isVisible ? "reveal-visible" : ""
+      } ${className}`}
     >
       {children}
     </div>

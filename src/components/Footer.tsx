@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MessageCircle, Globe, Share2 } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { buildWhatsAppUrl, siteConfig } from "@/config/site";
 import { SERVICES } from "@/data/content";
+import { SocialBrandIcon, WhatsAppIcon } from "./SocialIcons";
 
 export function Footer() {
   const currentYear = 2026;
@@ -51,7 +52,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-white/80 transition-colors hover:text-white"
+                    className="text-white/80 transition-colors hover:text-[#0E9AA7]"
                   >
                     {link.label}
                   </a>
@@ -126,7 +127,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 hover:text-white"
                 >
-                  <MessageCircle className="h-4 w-4 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
+                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
                   <span>WhatsApp: {siteConfig.contact.whatsappDisplay}</span>
                 </a>
               </li>
@@ -142,11 +143,7 @@ export function Footer() {
                   aria-label={social.ariaLabel}
                   className="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/85 transition-colors hover:border-[#C9A66B]/50 hover:text-white"
                 >
-                  {social.name === "Instagram" ? (
-                    <Globe className="h-3.5 w-3.5 text-[#C9A66B]" aria-hidden="true" />
-                  ) : (
-                    <Share2 className="h-3.5 w-3.5 text-[#C9A66B]" aria-hidden="true" />
-                  )}
+                  <SocialBrandIcon name={social.name} className="h-3.5 w-3.5 text-[#C9A66B]" />
                   <span>{social.name}</span>
                 </a>
               ))}

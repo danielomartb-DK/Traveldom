@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MapPin, Check, ArrowRight, Info } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { HOTELS_RD, RD_DESTINATIONS, type HotelItem } from "@/data/content";
+import { buildWhatsAppUrl } from "@/config/site";
 import { RevealOnScroll } from "./RevealOnScroll";
+import { BtnAvion } from "./BtnAvion";
 
 interface HotelsSectionProps {
-  onConsultHotel: (prefill: {
+  onConsultHotel?: (prefill: {
     service: string;
     destination: string;
     notes: string;
@@ -22,34 +24,30 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
       ? HOTELS_RD
       : HOTELS_RD.filter((hotel) => hotel.destination === selectedDestination);
 
-  const handleConsult = (hotel: HotelItem) => {
-    onConsultHotel({
-      service: "Hoteles",
-      destination: `${hotel.destination}, República Dominicana`,
-      notes: `Quisiera consultar disponibilidad y opciones similares a ${hotel.name} en ${hotel.destination}.`,
-    });
-  };
+  const getWhatsAppHref = (hotel: HotelItem) =>
+    buildWhatsAppUrl(
+      `Hola, me interesa cotizar el destino ${hotel.destination}, República Dominicana (opción: ${hotel.name}).`
+    );
 
   return (
-    <section id="destinos" className="bg-[#F4F6F8] py-12 lg:py-16 scroll-mt-20">
+    <section id="destinos" className="w-full bg-sand-turquoise section-pad scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Encabezado centrado */}
         <RevealOnScroll className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D5B91]">
-            Destinos y alojamiento en el Caribe
+          <span className="inline-block rounded-full bg-[#0E9AA7]/12 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#0B7D88]">
+            Caribe y descanso
           </span>
-          <h2 className="mt-2 font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-[#102D52] sm:text-4xl">
+          <h2 className="section-title mt-3 text-[#102D52]">
             Descubre el paraíso de República Dominicana
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-[#C9A66B]" />
-          <p className="mt-3 text-base text-slate-600 sm:text-lg">
+          <p className="mt-3 text-base text-slate-700 sm:text-[1.0625rem]">
             Explora destinos increíbles, hoteles y experiencias en uno de los
             lugares más atractivos del Caribe.
           </p>
         </RevealOnScroll>
 
         {/* Destinos destacados y filtro */}
-        <div className="mt-8 flex flex-col items-center gap-4">
+        <div className="mt-7 flex flex-col items-center gap-4">
           <div
             className="flex flex-wrap items-center justify-center gap-2"
             role="tablist"
@@ -67,7 +65,7 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
                   className={`rounded-full px-4 py-2 text-xs font-semibold transition-all sm:text-sm ${
                     active
                       ? "bg-[#102D52] text-white shadow-sm"
-                      : "border border-slate-200 bg-white text-[#102D52] hover:border-[#1D5B91] hover:bg-[#EAF4FC]"
+                      : "border border-[#102D52]/15 bg-white text-[#102D52] hover:border-[#0E9AA7] hover:bg-[#E6F7F8]"
                   }`}
                 >
                   {dest}
@@ -75,76 +73,99 @@ export function HotelsSection({ onConsultHotel }: HotelsSectionProps) {
               );
             })}
           </div>
-
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#1D5B91]/20 bg-white px-4 py-1.5 text-xs text-slate-600">
-            <Info className="h-3.5 w-3.5 text-[#C9A66B]" strokeWidth={1.75} aria-hidden="true" />
-            <span>
-              Catálogo de demostración: los nombres definitivos, tarifas y
-              disponibilidad real se confirman al consultar con un asesor.
-            </span>
-          </div>
         </div>
 
-        {/* Grid de hoteles */}
-        <div className="mt-8 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {filteredHotels.map((hotel, idx) => (
-            <RevealOnScroll key={hotel.id} delayMs={idx * 55}>
-              <article className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-[0_6px_24px_rgba(16,45,82,0.05)] transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_14px_34px_rgba(16,45,82,0.1)]">
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src={hotel.image}
-                    alt={hotel.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-[#102D52]/85 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-xs">
-                    <MapPin className="h-3 w-3 text-[#C9A66B]" strokeWidth={2} aria-hidden="true" />
-                    <span>{hotel.destination}</span>
-                  </div>
-                  {hotel.isDemo && (
-                    <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#102D52] shadow-xs">
-                      Demo
+        {/* Carrusel horizontal en móvil; grilla limpia 3 columnas en escritorio con foto despejada */}
+        <div className="mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:pb-0 md:overflow-visible md:grid md:grid-cols-2 lg:grid-cols-3">
+          {filteredHotels.map((hotel, idx) => {
+            const highlights = hotel.features.slice(0, 2);
+
+            return (
+              <RevealOnScroll
+                key={hotel.id}
+                delayMs={idx * 60}
+                className="shrink-0 w-[85vw] sm:w-[68vw] snap-center md:w-auto"
+              >
+                <article className="group flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[#102D52]/12 bg-white shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0E9AA7]/40 hover:shadow-[var(--shadow-elevated)]">
+                  {/* Fotografía limpia sin texto encima */}
+                  <div className="relative h-56 w-full shrink-0 overflow-hidden bg-[#102D52] sm:h-60">
+                    <Image
+                      src={hotel.image}
+                      alt={hotel.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#102D52]/35 to-transparent"
+                    />
+                    <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#102D52]/90 px-3 py-1 text-xs font-semibold text-white shadow-xs backdrop-blur-xs">
+                      <MapPin className="h-3.5 w-3.5 text-[#E3B963]" strokeWidth={2} aria-hidden="true" />
+                      <span>{hotel.destination}</span>
                     </span>
-                  )}
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-[#102D52]">
-                    {hotel.name}
-                  </h3>
-
-                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
-                    {hotel.description}
-                  </p>
-
-                  <ul className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-xs text-slate-700">
-                    {hotel.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2">
-                        <Check
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#1D5B91]"
-                          strokeWidth={2.2}
-                          aria-hidden="true"
-                        />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => handleConsult(hotel)}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#1D5B91] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#102D52]"
-                    >
-                      <span>Consultar disponibilidad</span>
-                      <ArrowRight className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-                    </button>
                   </div>
-                </div>
-              </article>
-            </RevealOnScroll>
-          ))}
+
+                  {/* Cuerpo editorial limpio y respirable */}
+                  <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+                    <div>
+                      <h3 className="font-[family-name:var(--font-poppins)] text-lg font-bold text-[#102D52] sm:text-xl">
+                        {hotel.name}
+                      </h3>
+
+                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
+                        {hotel.description}
+                      </p>
+
+                      <ul
+                        aria-label={`Destacados de ${hotel.destination}`}
+                        className="mt-3.5 space-y-1.5 border-t border-slate-100 pt-3 text-xs font-medium text-slate-700"
+                      >
+                        {highlights.map((item) => (
+                          <li key={item} className="flex items-center gap-2">
+                            <span
+                              aria-hidden="true"
+                              className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#0E9AA7]"
+                            />
+                            <span className="truncate">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-5 flex items-center justify-between gap-3 pt-1">
+                      <BtnAvion
+                        href={getWhatsAppHref(hotel)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="primario"
+                        intensity="ligera"
+                        className="!min-h-[40px] !px-5 !py-2 !text-xs sm:!text-sm"
+                      >
+                        Cotizar destino
+                      </BtnAvion>
+
+                      {onConsultHotel && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            onConsultHotel({
+                              service: "Hoteles",
+                              destination: `${hotel.destination}, República Dominicana`,
+                              notes: `Quisiera consultar disponibilidad y opciones similares a ${hotel.name} en ${hotel.destination}.`,
+                            })
+                          }
+                          className="text-xs font-semibold text-[#0B7D88] underline-offset-4 transition-colors hover:text-[#102D52] hover:underline"
+                        >
+                          Por formulario
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </RevealOnScroll>
+            );
+          })}
         </div>
       </div>
     </section>
