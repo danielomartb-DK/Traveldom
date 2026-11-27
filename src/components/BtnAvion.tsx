@@ -38,6 +38,8 @@ const SPARKLES: Array<{ left: string; top: string; d: string; dy: string }> = [
 export function AvionDefsAndController() {
   useEffect(() => {
     const timers = new WeakMap<HTMLElement, number>();
+    const entranceTimers = new WeakMap<HTMLElement, number>();
+    const lastAutoFlight = new WeakMap<HTMLElement, number>();
 
     const triggerFlight = (btn: HTMLElement, x?: number, y?: number) => {
       const hasWave = x !== undefined && y !== undefined;
@@ -85,9 +87,65 @@ export function AvionDefsAndController() {
     document.addEventListener("mouseover", handleMouseOver);
     document.addEventListener("click", handleClick);
 
+    // En dispositivos táctiles (Android/iOS sin hover), activar el vuelo cuando el botón entra en pantalla
+    const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let io: IntersectionObserver | null = null;
+    let mo: MutationObserver | null = null;
+
+    if (isTouchDevice && !prefersReducedMotion && "IntersectionObserver" in window) {
+      const observedButtons = new WeakSet<HTMLElement>();
+
+      io = new IntersectionObserver(
+        (entries) => {
+          const now = Date.now();
+          for (const entry of entries) {
+            const btn = entry.target as HTMLElement;
+            const pendingEntrance = entranceTimers.get(btn);
+
+            if (!entry.isIntersecting) {
+              if (pendingEntrance) {
+                window.clearTimeout(pendingEntrance);
+                entranceTimers.delete(btn);
+              }
+              continue;
+            }
+
+            const lastTime = lastAutoFlight.get(btn) ?? 0;
+            if (now - lastTime < 3500) continue;
+
+            if (pendingEntrance) window.clearTimeout(pendingEntrance);
+            const t = window.setTimeout(() => {
+              lastAutoFlight.set(btn, Date.now());
+              triggerFlight(btn);
+              entranceTimers.delete(btn);
+            }, 260);
+            entranceTimers.set(btn, t);
+          }
+        },
+        { threshold: 0.35 }
+      );
+
+      const observeNewButtons = () => {
+        document.querySelectorAll<HTMLElement>(".btn-avion").forEach((btn) => {
+          if (!observedButtons.has(btn)) {
+            observedButtons.add(btn);
+            io?.observe(btn);
+          }
+        });
+      };
+
+      observeNewButtons();
+      mo = new MutationObserver(observeNewButtons);
+      mo.observe(document.body, { childList: true, subtree: true });
+    }
+
     return () => {
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("click", handleClick);
+      io?.disconnect();
+      mo?.disconnect();
     };
   }, []);
 
