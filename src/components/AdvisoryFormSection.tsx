@@ -286,16 +286,16 @@ export function AdvisoryFormSection({
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#0E9AA7]/25 bg-white p-5 shadow-[var(--shadow-card)]">
+            <div className="rounded-xl border border-[#102D52] border-t-[3px] border-t-[#C9A66B] bg-[#102D52] p-5 text-white shadow-[var(--shadow-elevated)]">
               <div className="flex items-start gap-3">
                 <ShieldCheck
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#0E9AA7]"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[#E3B963]"
                   strokeWidth={1.75}
                   aria-hidden="true"
                 />
-                <div className="text-xs leading-relaxed text-[#102D52]">
+                <div className="text-xs leading-relaxed text-white">
                   <p className="font-semibold">Compromiso de transparencia</p>
-                  <p className="mt-1 text-slate-600">{siteConfig.legalDisclaimer}</p>
+                  <p className="mt-1 text-[#EAF4FC]/85">{siteConfig.legalDisclaimer}</p>
                 </div>
               </div>
             </div>
@@ -309,13 +309,13 @@ export function AdvisoryFormSection({
                 e.preventDefault();
                 handleDispatch("whatsapp");
               }}
-              className="rounded-2xl border border-[#102D52]/12 bg-white p-6 shadow-[var(--shadow-elevated)] sm:p-8"
+              className="rounded-2xl border border-[#102D52] border-t-[3px] border-t-[#C9A66B] bg-[#102D52] p-6 text-white shadow-[var(--shadow-elevated)] sm:p-8"
             >
-              <h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-[#102D52]">
+              <h3 className="font-[family-name:var(--font-poppins)] text-xl font-bold text-white">
                 Formulario de solicitud de asesoría
               </h3>
-              <p className="mt-1 text-xs text-slate-500">
-                Todos los campos marcados con <span className="text-red-600">*</span>{" "}
+              <p className="mt-1 text-xs text-[#EAF4FC]/80">
+                Todos los campos marcados con <span className="text-rose-300">*</span>{" "}
                 son obligatorios. Al enviar se abrirá WhatsApp o tu correo con la
                 información lista para remitir.
               </p>
@@ -325,9 +325,9 @@ export function AdvisoryFormSection({
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="fullName"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Nombre completo <span className="text-red-600">*</span>
+                    Nombre completo <span className="text-rose-300">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -341,14 +341,14 @@ export function AdvisoryFormSection({
                     placeholder="Ej. María Pérez"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.fullName
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.fullName && (
                     <p
                       id="error-fullName"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.fullName}</span>
@@ -360,9 +360,9 @@ export function AdvisoryFormSection({
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Correo electrónico <span className="text-red-600">*</span>
+                    Correo electrónico <span className="text-rose-300">*</span>
                   </label>
                   <input
                     id="email"
@@ -377,14 +377,14 @@ export function AdvisoryFormSection({
                     placeholder="correo@ejemplo.com"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.email
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.email && (
                     <p
                       id="error-email"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.email}</span>
@@ -396,9 +396,9 @@ export function AdvisoryFormSection({
                 <div>
                   <label
                     htmlFor="whatsapp"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Número de WhatsApp <span className="text-red-600">*</span>
+                    Número de WhatsApp <span className="text-rose-300">*</span>
                   </label>
                   <input
                     id="whatsapp"
@@ -413,14 +413,14 @@ export function AdvisoryFormSection({
                     placeholder="Ej. +1 809 555 0100"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.whatsapp
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.whatsapp && (
                     <p
                       id="error-whatsapp"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.whatsapp}</span>
@@ -432,9 +432,9 @@ export function AdvisoryFormSection({
                 <div>
                   <label
                     htmlFor="country"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    País de residencia <span className="text-red-600">*</span>
+                    País de residencia <span className="text-rose-300">*</span>
                   </label>
                   <input
                     id="country"
@@ -448,14 +448,14 @@ export function AdvisoryFormSection({
                     placeholder="Ej. República Dominicana"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.country
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.country && (
                     <p
                       id="error-country"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.country}</span>
@@ -467,9 +467,9 @@ export function AdvisoryFormSection({
                 <div>
                   <label
                     htmlFor="service"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Servicio de interés <span className="text-red-600">*</span>
+                    Servicio de interés <span className="text-rose-300">*</span>
                   </label>
                   <select
                     id="service"
@@ -480,8 +480,8 @@ export function AdvisoryFormSection({
                     aria-describedby={errors.service ? "error-service" : undefined}
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.service
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   >
                     {SERVICE_FORM_OPTIONS.map((option) => (
@@ -493,7 +493,7 @@ export function AdvisoryFormSection({
                   {errors.service && (
                     <p
                       id="error-service"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.service}</span>
@@ -505,9 +505,9 @@ export function AdvisoryFormSection({
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="destination"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Destino <span className="text-red-600">*</span>
+                    Destino <span className="text-rose-300">*</span>
                   </label>
                   <input
                     id="destination"
@@ -520,14 +520,14 @@ export function AdvisoryFormSection({
                     placeholder="Ej. Punta Cana, Estados Unidos, España"
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.destination
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.destination && (
                     <p
                       id="error-destination"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.destination}</span>
@@ -539,9 +539,9 @@ export function AdvisoryFormSection({
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block text-sm font-medium text-[#102D52]"
+                    className="block text-sm font-medium text-[#EAF4FC]"
                   >
-                    Descripción de la solicitud <span className="text-red-600">*</span>
+                    Descripción de la solicitud <span className="text-rose-300">*</span>
                   </label>
                   <textarea
                     id="description"
@@ -554,14 +554,14 @@ export function AdvisoryFormSection({
                     placeholder="Cuéntanos fechas estimadas, cantidad de personas o el tipo de orientación que necesitas..."
                     className={`mt-1.5 block w-full rounded-md border px-3.5 py-2.5 text-sm text-[#1a2433] shadow-2xs transition-colors ${
                       errors.description
-                        ? "border-red-500 bg-red-50/40 focus:outline-none focus:ring-2 focus:ring-red-500/20"
-                        : "border-slate-300 bg-white focus:border-[#0E9AA7] focus:outline-none focus:ring-2 focus:ring-[#0E9AA7]/20"
+                        ? "border-rose-400 bg-rose-50 focus:outline-none focus:ring-2 focus:ring-rose-400/30"
+                        : "border-white/20 bg-white focus:border-[#E3B963] focus:outline-none focus:ring-2 focus:ring-[#E3B963]/30"
                     }`}
                   />
                   {errors.description && (
                     <p
                       id="error-description"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.description}</span>
@@ -571,7 +571,7 @@ export function AdvisoryFormSection({
 
                 {/* Aceptación de tratamiento de datos */}
                 <div className="sm:col-span-2">
-                  <label className="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer">
+                  <label className="flex items-start gap-2.5 text-xs text-[#EAF4FC]/85 cursor-pointer">
                     <input
                       id="acceptPrivacy"
                       type="checkbox"
@@ -583,30 +583,30 @@ export function AdvisoryFormSection({
                       aria-describedby={
                         errors.acceptPrivacy ? "error-acceptPrivacy" : undefined
                       }
-                      className="mt-0.5 h-4 w-4 rounded border-slate-300 text-[#102D52]"
+                      className="mt-0.5 h-4 w-4 rounded border-white/30 text-[#C9A66B]"
                     />
                     <span>
                       He leído y acepto la{" "}
                       <Link
                         href="/politica-privacidad"
-                        className="font-semibold text-[#1D5B91] underline underline-offset-2 hover:text-[#102D52]"
+                        className="font-semibold text-[#E3B963] underline underline-offset-2 hover:text-white"
                       >
                         Política de privacidad
                       </Link>{" "}
                       y la política de{" "}
                       <Link
                         href="/tratamiento-datos"
-                        className="font-semibold text-[#1D5B91] underline underline-offset-2 hover:text-[#102D52]"
+                        className="font-semibold text-[#E3B963] underline underline-offset-2 hover:text-white"
                       >
                         Tratamiento de datos
                       </Link>
-                      . <span className="text-red-600">*</span>
+                      . <span className="text-rose-300">*</span>
                     </span>
                   </label>
                   {errors.acceptPrivacy && (
                     <p
                       id="error-acceptPrivacy"
-                      className="mt-1.5 flex items-center gap-1 text-xs text-red-600"
+                      className="mt-1.5 flex items-center gap-1 text-xs text-rose-300"
                     >
                       <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       <span>{errors.acceptPrivacy}</span>
@@ -621,15 +621,15 @@ export function AdvisoryFormSection({
                   aria-live="polite"
                   className={`mt-5 flex items-start gap-2.5 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
                     isSuccess
-                      ? "border-green-300 bg-green-50 text-green-800"
+                      ? "border-emerald-400/40 bg-emerald-950/60 text-emerald-200"
                       : Object.keys(errors).length > 0
-                        ? "border-red-200 bg-red-50 text-red-800"
-                        : "border-[#1D5B91]/30 bg-[#EAF4FC] text-[#102D52]"
+                        ? "border-rose-400/40 bg-rose-950/60 text-rose-200"
+                        : "border-[#0E9AA7]/50 bg-white/10 text-[#EAF4FC]"
                   }`}
                 >
                   {isSuccess && (
                     <svg
-                      className="mt-0.5 h-4 w-4 shrink-0 text-green-600"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
