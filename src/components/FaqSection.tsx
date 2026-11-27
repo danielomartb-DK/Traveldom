@@ -34,7 +34,11 @@ export function FaqSection() {
             return (
               <RevealOnScroll key={faq.id} delayMs={idx * 55}>
                 <div
-                  className="overflow-hidden rounded-[var(--radius-md)] border border-[#102D52]/12 bg-white shadow-[var(--shadow-card)] transition-colors hover:border-[#0E9AA7]/50"
+                  className={`overflow-hidden rounded-[var(--radius-md)] border border-t-[3px] border-t-[#C9A66B] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] transition-colors ${
+                    isOpen
+                      ? "border-[#E3B963]/60"
+                      : "border-[#102D52] hover:border-[#0E9AA7]/60"
+                  }`}
                 >
                 <h3>
                   <button
@@ -43,14 +47,14 @@ export function FaqSection() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => toggleItem(faq.id)}
-                    className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition-colors hover:bg-[#FAF7F2]/60 sm:gap-4 sm:px-6 sm:py-5"
+                    className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition-colors hover:bg-white/[0.04] sm:gap-4 sm:px-6 sm:py-5"
                   >
-                    <span className="font-[family-name:var(--font-poppins)] text-[15px] font-semibold text-[#102D52] sm:text-lg">
+                    <span className="font-[family-name:var(--font-poppins)] text-[15px] font-semibold text-white sm:text-lg">
                       {faq.question}
                     </span>
                     <ChevronDown
-                      className={`h-5 w-5 shrink-0 text-[#0E9AA7] transition-transform duration-300 ease-out motion-reduce:transition-none ${
-                        isOpen ? "rotate-180 text-[#C9A66B]" : "rotate-0"
+                      className={`h-5 w-5 shrink-0 transition-transform duration-300 ease-out motion-reduce:transition-none ${
+                        isOpen ? "rotate-180 text-[#E3B963]" : "rotate-0 text-[#4DD0DC]"
                       }`}
                       strokeWidth={2}
                       aria-hidden="true"
@@ -70,7 +74,7 @@ export function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="border-t border-slate-100 px-4 py-3.5 text-sm leading-relaxed text-slate-600 sm:px-6 sm:py-4 sm:text-base">
+                    <div className="border-t border-white/15 px-4 py-3.5 text-sm leading-relaxed text-[#EAF4FC]/90 sm:px-6 sm:py-4 sm:text-base">
                       {faq.answer}
                     </div>
                   </div>
