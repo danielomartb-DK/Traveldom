@@ -57,37 +57,38 @@ export function Hero() {
 
       {/* Contenido principal dimensionado para cubrir 100% de la portada */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pt-20 pb-5 sm:px-6 sm:pt-24 sm:pb-6 lg:px-8 lg:pt-24 lg:pb-7">
-        <div className="max-w-xl space-y-3 sm:space-y-3.5 hero-fade-up">
-          {/* Eyebrow con pin + línea horizontal */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#FAF7F2] drop-shadow-xs sm:gap-2 sm:text-sm sm:tracking-[0.18em]">
+        <div className="max-w-xl space-y-3.5 sm:space-y-4 hero-fade-up">
+          {/* Eyebrow con cápsula estilizada y alineada */}
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-[#081C38]/45 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#FAF7F2] shadow-xs backdrop-blur-xs sm:gap-2 sm:px-3.5 sm:text-xs sm:tracking-[0.18em]">
               <MapPin
-                className="h-3.5 w-3.5 text-[#E3B963] sm:h-4 sm:w-4"
+                className="h-3.5 w-3.5 text-[#E3B963] shrink-0"
                 strokeWidth={2.2}
                 aria-hidden="true"
               />
               <span>República Dominicana</span>
             </span>
-            <span
-              aria-hidden="true"
-              className="h-px w-14 bg-white/50 sm:w-32"
-            />
           </div>
 
           {/* Titular principal */}
-          <h1 className="font-[family-name:var(--font-poppins)] text-[1.75rem] font-bold leading-[1.12] tracking-tight text-white drop-shadow-[0_2px_10px_rgba(6,24,48,0.45)] sm:text-4xl sm:leading-[1.08] lg:text-[2.95rem] xl:text-[3.25rem]">
+          <h1 className="font-[family-name:var(--font-poppins)] text-[1.8rem] font-bold leading-[1.14] tracking-tight text-white drop-shadow-[0_2px_10px_rgba(6,24,48,0.45)] sm:text-4xl sm:leading-[1.08] lg:text-[2.95rem] xl:text-[3.25rem]">
             Tu próximo viaje comienza con una{" "}
             <span className="italic text-[#E3B963]">buena asesoría.</span>
           </h1>
 
-          <p className="max-w-lg text-sm leading-relaxed text-white/95 drop-shadow-[0_1px_6px_rgba(6,24,48,0.5)] sm:text-base lg:text-[1.05rem]">
+          <p className="max-w-lg text-[14.5px] leading-relaxed text-white/95 drop-shadow-[0_1px_6px_rgba(6,24,48,0.5)] sm:text-base lg:text-[1.05rem]">
             Asesoría de viajes, orientación sobre visas y experiencias diseñadas
             desde República Dominicana.
           </p>
 
-          {/* CTAs principales */}
-          <div className="flex flex-wrap items-center gap-3 pt-1 sm:gap-4">
-            <BtnAvion href="#contacto" variant="primario" intensity="completa">
+          {/* CTAs principales alineados con ancho uniforme en móvil y en fila en escritorio */}
+          <div className="flex flex-col gap-2.5 pt-1 sm:flex-row sm:items-center sm:gap-4">
+            <BtnAvion
+              href="#contacto"
+              variant="primario"
+              intensity="completa"
+              className="w-full sm:w-auto text-center"
+            >
               Solicita asesoría
             </BtnAvion>
 
@@ -95,7 +96,7 @@ export function Hero() {
               href="#servicios"
               variant="secundario"
               intensity="completa"
-              className="!border-white/75 !bg-[#081C38]/55 !text-white backdrop-blur-md hover:!bg-[#081C38]/75 hover:!border-white"
+              className="w-full sm:w-auto text-center !border-white/75 !bg-[#081C38]/55 !text-white backdrop-blur-md hover:!bg-[#081C38]/75 hover:!border-white"
             >
               Conoce nuestros servicios
             </BtnAvion>
