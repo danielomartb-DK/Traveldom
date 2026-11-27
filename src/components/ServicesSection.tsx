@@ -113,10 +113,8 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
                 className={spanClass}
               >
                 <article
-                  className={`group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] border transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[var(--shadow-elevated)] ${
-                    isFeatured
-                      ? "border-[#102D52] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] lg:flex-row"
-                      : "border-[#102D52]/12 border-t-[3px] border-t-[#0E9AA7] bg-white shadow-[var(--shadow-card)] hover:border-[#0E9AA7]/45"
+                  className={`group flex h-full flex-col overflow-hidden rounded-[var(--radius-md)] border border-[#102D52] bg-[#102D52] text-white shadow-[var(--shadow-elevated)] transition-all duration-300 hover:-translate-y-[5px] hover:border-[#0E9AA7]/60 ${
+                    isFeatured ? "lg:flex-row" : "border-t-[3px] border-t-[#C9A66B]"
                   }`}
                 >
                   {/* Fotografía nítida sin oscurecimiento excesivo */}
@@ -158,53 +156,37 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
                   <div className="flex flex-1 flex-col justify-between p-6 sm:p-7">
                     <div>
                       <h3
-                        className={`font-[family-name:var(--font-poppins)] text-xl font-bold ${
-                          isFeatured ? "text-2xl text-white" : "text-[#102D52]"
+                        className={`font-[family-name:var(--font-poppins)] font-bold text-white ${
+                          isFeatured ? "text-2xl" : "text-xl"
                         }`}
                       >
                         {service.title}
                       </h3>
 
                       {service.subtitle && (
-                        <p
-                          className={`mt-1 text-xs font-semibold tracking-wide ${
-                            isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
-                          }`}
-                        >
+                        <p className="mt-1 text-xs font-semibold tracking-wide text-[#E3B963]">
                           {service.subtitle}
                         </p>
                       )}
 
-                      <p
-                        className={`mt-3 text-[15px] leading-relaxed sm:text-base ${
-                          isFeatured ? "text-[#EAF4FC]/90" : "text-slate-600"
-                        }`}
-                      >
+                      <p className="mt-3 text-[15px] leading-relaxed text-[#EAF4FC]/90 sm:text-base">
                         {service.shortDescription}
                       </p>
 
                       {/* Acordeón accesible "Ver qué incluye" */}
-                      <div
-                        className={`mt-4 border-t pt-3 ${
-                          isFeatured ? "border-white/15" : "border-slate-200/70"
-                        }`}
-                      >
+                      <div className="mt-4 border-t border-white/15 pt-3">
                         <button
                           type="button"
                           onClick={() => toggleExpanded(service.id)}
                           aria-expanded={isExpanded}
                           aria-controls={panelId}
-                          className={`flex w-full items-center justify-between gap-2 rounded-[var(--radius-sm)] py-1.5 text-left text-sm font-semibold transition-colors ${
-                            isFeatured
-                              ? "text-white hover:text-[#E3B963]"
-                              : "text-[#102D52] hover:text-[#0E9AA7]"
-                          }`}
+                          className="flex w-full items-center justify-between gap-2 rounded-[var(--radius-sm)] py-1.5 text-left text-sm font-semibold text-white transition-colors hover:text-[#E3B963]"
                         >
                           <span>Ver qué incluye</span>
                           <ChevronDown
-                            className={`h-4 w-4 shrink-0 transition-transform duration-300 motion-reduce:transition-none ${
-                              isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
-                            } ${isExpanded ? "rotate-180" : "rotate-0"}`}
+                            className={`h-4 w-4 shrink-0 text-[#E3B963] transition-transform duration-300 motion-reduce:transition-none ${
+                              isExpanded ? "rotate-180" : "rotate-0"
+                            }`}
                             strokeWidth={2}
                             aria-hidden="true"
                           />
@@ -220,17 +202,11 @@ export function ServicesSection({ onSelectAdvisory }: ServicesSectionProps) {
                           }`}
                         >
                           <div className="overflow-hidden">
-                            <ul
-                              className={`space-y-2 pt-2.5 pb-1 text-[15px] ${
-                                isFeatured ? "text-[#EAF4FC]" : "text-slate-700"
-                              }`}
-                            >
+                            <ul className="space-y-2 pt-2.5 pb-1 text-[15px] text-[#EAF4FC]">
                               {service.features.map((feature) => (
                                 <li key={feature} className="flex items-start gap-2.5">
                                   <Check
-                                    className={`mt-1 h-4 w-4 shrink-0 ${
-                                      isFeatured ? "text-[#E3B963]" : "text-[#0E9AA7]"
-                                    }`}
+                                    className="mt-1 h-4 w-4 shrink-0 text-[#E3B963]"
                                     strokeWidth={2.2}
                                     aria-hidden="true"
                                   />
